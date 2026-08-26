@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>fixed_income_pricing</RootNamespace>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="CashFlows\" />
+    <Folder Include="Curvers\" />
+    <Folder Include="Indices\" />
+    <Folder Include="Portfolio\" />
+    <Folder Include="Pricing\" />
+    <Folder Include="Risk\" />
+  </ItemGroup>
+
+</Project>

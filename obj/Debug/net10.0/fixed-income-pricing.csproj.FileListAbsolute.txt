@@ -1,0 +1,15 @@
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/bin/Debug/net10.0/fixed-income-pricing
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/bin/Debug/net10.0/fixed-income-pricing.deps.json
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/bin/Debug/net10.0/fixed-income-pricing.runtimeconfig.json
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/bin/Debug/net10.0/fixed-income-pricing.dll
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/bin/Debug/net10.0/fixed-income-pricing.pdb
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/obj/Debug/net10.0/fixed-income-pricing.GeneratedMSBuildEditorConfig.editorconfig
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/obj/Debug/net10.0/fixed-income-pricing.AssemblyInfoInputs.cache
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/obj/Debug/net10.0/fixed-income-pricing.AssemblyInfo.cs
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/obj/Debug/net10.0/fixed-income-pricing.csproj.CoreCompileInputs.cache
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/obj/Debug/net10.0/fixed-income-pricing.sourcelink.json
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/obj/Debug/net10.0/fixed-income-pricing.dll
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/obj/Debug/net10.0/refint/fixed-income-pricing.dll
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/obj/Debug/net10.0/fixed-income-pricing.pdb
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/obj/Debug/net10.0/fixed-income-pricing.genruntimeconfig.cache
+/Users/leonardo/Documents/GitHub/fixed-income-pricing/obj/Debug/net10.0/ref/fixed-income-pricing.dll
