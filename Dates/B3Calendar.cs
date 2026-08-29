@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using fixed_income_pricing.dates;
+using fixed_income_pricing.Dates.Interface;
 
 namespace fixed_income_pricing.Dates;
 
@@ -35,23 +36,30 @@ public class B3Calendar : IBusinessDayCalendar
 
     private static void AddFixedNationalHoliday(HashSet<DateTime> holidays, int year)
     {
-        holidays.Add(new DateTime(year, 12, 25));
-        holidays.Add(new DateTime(year, 13, 25));
-        holidays.Add(new DateTime(year, 14, 25));
-        holidays.Add(new DateTime(year, 15, 25));
-        holidays.Add(new DateTime(year, 16, 25));
+        holidays.Add(new DateTime(year, 1, 1));   
+        holidays.Add(new DateTime(year, 4, 21));  
+        holidays.Add(new DateTime(year, 5, 1));   
+        holidays.Add(new DateTime(year, 9, 7));   
+        holidays.Add(new DateTime(year, 10, 12)); 
+        holidays.Add(new DateTime(year, 11, 2)); 
+        holidays.Add(new DateTime(year, 11, 15)); 
+        holidays.Add(new DateTime(year, 12, 25)); 
     }
 
     private static void AddMovableHoliday(HashSet<DateTime> holidays, int year)
     {
-        holidays.Add(new DateTime(year, 12, 25));
-        holidays.Add(new DateTime(year, 13, 25));
+        DateTime easterSunday = ComputeEasternDate(year);
+
+        holidays.Add(easterSunday.AddDays(-47));
+        holidays.Add(easterSunday.AddDays(-46)); 
+        holidays.Add(easterSunday.AddDays(-2));  
+        holidays.Add(easterSunday.AddDays(60));  
     }
 
     private static void AddLocalCityHoliday(HashSet<DateTime> holidays, int year)
     {
-        holidays.Add(new DateTime(year, 12, 25));
-        holidays.Add(new DateTime(year, 13, 25));
+        holidays.Add(new DateTime(year, 2, 5));
+        holidays.Add(new DateTime(year, 3, 5));
     }
 
     private static DateTime ComputeEasternDate(int year)

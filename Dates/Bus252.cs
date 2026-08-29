@@ -1,21 +1,14 @@
-namespace fixed_income_pricing;
+using System;
+using fixed_income_pricing.Dates.Interface;
 
-public class Bus252
+namespace fixed_income_pricing.dates;
+
+public class Bus252:IDayCountConvention
 {
-    public double Fator(double taxaAnual, int du)
+    public double YearFraction(DateTime startDate, DateTime endDate, IBusinessDayCalendar calendar)
     {
-        double exp = (double) du / 252;
-        return Math.Pow((1 + taxaAnual),  exp); 
+        int businessDays = calendar.CountBusinessDaysBetween(startDate, endDate);
+        return businessDays / 252;
     }
-    
-    public double ValorPresente(int valorFuturo, double taxaAnual, int du)
-    {
-        var f =  Fator(taxaAnual, du);
-        return valorFuturo/f;
-    }
-    
-    public void Foward()
-    {
-        Console.WriteLine("Foward");
-    }
+      
 }

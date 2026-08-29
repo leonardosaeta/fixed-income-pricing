@@ -1,4 +1,4 @@
-namespace fixed_income_pricing.dates;
+namespace fixed_income_pricing.Dates.Interface;
 
 public interface IBusinessDayCalendar
 {
