@@ -1,18 +1,21 @@
 ﻿using System.Xml.Serialization;
 using fixed_income_pricing.Dates;
 using fixed_income_pricing.Indices;
-
-// Has nos being created yet.
-var cdiRates = LoadCdiRatesFromCsv("cdi.csv"); 
-var ipcaNumbers = LoadIpcaNumbersFromCsv("ipca.csv");
+using fixed_income_pricing.Instruments.Bank;
 
 var calendar = new B3Calendar(2020, 2030);
+
+//Needs to be implemented
+var cdiRates = LoadCdiRatesFromCsv("cdi.csv");
 var cdi = new CDIIndex(cdiRates, calendar);
 
-double cdiGrowth = cdi.AccrualFactor(new DateTime(2026, 1, 2), new DateTime(2026, 7, 1));
-Console.WriteLine($"CDI growth over H1 2026: {cdiGrowth:F6}");
+var cdb = new PostFixedCDB(
+    id: "CDB-001",
+    issueDate: new DateTime(2026, 1, 2),
+    maturityDate: new DateTime(2027, 1, 4),
+    notional: 100_000,
+    percentualCdi: 0.98,
+    cdiIndex: cdi);
 
-var ipca = new IPCAIndex(ipcaNumbers);
-
-double ipcaGrowth = ipca.AccrualFactor(new DateTime(2026, 1, 1), new DateTime(2026, 8, 20));
-Console.WriteLine($"IPCA growth: {ipcaGrowth:F6}");
+double redemption = cdb.RedemptionValue();
+Console.WriteLine($"Redemption value: {redemption:F2}");
