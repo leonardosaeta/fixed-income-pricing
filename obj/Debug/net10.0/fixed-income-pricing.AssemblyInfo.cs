@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("fixed-income-pricing")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b355e68520550b4daef8599db6b350d39e82d4e8")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+842b0a0622dfffe9fda5651bf8098e4e942cfb71")]
 [assembly: System.Reflection.AssemblyProductAttribute("fixed-income-pricing")]
 [assembly: System.Reflection.AssemblyTitleAttribute("fixed-income-pricing")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
