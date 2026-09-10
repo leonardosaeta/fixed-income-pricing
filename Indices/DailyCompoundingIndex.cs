@@ -22,26 +22,34 @@ public abstract class DailyCompoundingIndex : IIndex
       _calendar = calendar;
     }
 
-    private double DailyFactor(DateTime date)
+    private double DailyFactor(DateTime date, ref double lastKnownRate)
     {
-        if (!_dailyRates.TryGetValue(date.Date, out double annualRate))
-            throw new InvalidOperationException($"{Name}: no rate available:yyyy-mm-dd");
-        return Math.Pow(1+annualRate, 1.0/252.0);
+        if (_dailyRates.TryGetValue(date.Date, out double annualRate))
+        {
+            lastKnownRate = annualRate;
+        }
+        else if (double.IsNaN(lastKnownRate))
+        {
+            throw new InvalidOperationException($"{Name}: no rate available for {date:yyyy-MM-dd}");
+        }
+
+        return Math.Pow(1 + lastKnownRate, 1.0/252.0);
     }
 
     public double AccrualFactor(DateTime startDate, DateTime endDate)
-    { 
+    {
         if (startDate > endDate) throw new ArgumentException("startDate must <= endDate");
 
         double factor = 1.0;
+        double lastKnownRate = double.NaN;
         DateTime current =  startDate.Date;
 
         while (current <= endDate)
         {
             current = _calendar.AddBusinessDay(current, 1);
-            factor *= DailyFactor(current);
+            factor *= DailyFactor(current, ref lastKnownRate);
         }
-        
+
         return factor;
-    }   
+    }
 }
