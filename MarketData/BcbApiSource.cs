@@ -29,11 +29,11 @@ public class BcbApiSource:IRateDataSource
 
        foreach (var element in document.RootElement.EnumerateArray())
        {
-           string dateStr = element.GetProperty("data").GetString(); // Check warning 
-           string valueStr = element.GetProperty("valor").GetString(); // Check warning
+           string dateStr = element.GetProperty("data").GetString(); 
+           string valueStr = element.GetProperty("valor").GetString(); 
            
-           DateTime date = DateTime.ParseExact(dateStr, "yyyy-MM-dd", CultureInfo.InvariantCulture); // Check warning
-           double rawValue = double.Parse(valueStr, CultureInfo.InstalledUICulture);
+           DateTime date = DateTime.ParseExact(dateStr, "dd/MM/yyyy", CultureInfo.InvariantCulture);
+           double rawValue = double.Parse(valueStr, CultureInfo.InvariantCulture);
 
            result[date] = rawValue / 100.0;
        }
