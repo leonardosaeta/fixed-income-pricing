@@ -9,7 +9,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Curvers\" />
     <Folder Include="Portfolio\" />
     <Folder Include="Pricing\" />
     <Folder Include="Risk\" />
