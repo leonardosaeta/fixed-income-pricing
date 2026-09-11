@@ -9,7 +9,5 @@ public interface IInstrument
     string Id {get;}
     DateTime IssueDate {get;}
     DateTime MaturityDate {get;}
-    
     IEnumerable<Cashflow> GenerateCashflows(DateTime valuationDate);
-    
 }
