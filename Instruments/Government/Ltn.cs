@@ -12,7 +12,7 @@ public class Ltn:IInstrument
     
     public double FaceValue {get;}
 
-    public Ltn(string id, DateTime issueDate, DateTime maturityDate, double faceValue)
+    public Ltn(string id, DateTime issueDate, DateTime maturityDate, double faceValue = 1000.0)
     {
         if (maturityDate <= issueDate)
             throw new ArgumentException("maturityDate must be greater than issueDate");

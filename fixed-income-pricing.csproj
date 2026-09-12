@@ -10,7 +10,6 @@
 
   <ItemGroup>
     <Folder Include="Portfolio\" />
-    <Folder Include="Pricing\" />
     <Folder Include="Risk\" />
   </ItemGroup>
 

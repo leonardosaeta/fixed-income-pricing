@@ -8,7 +8,7 @@ public class Bus252:IDayCountConvention
     public double YearFraction(DateTime startDate, DateTime endDate, IBusinessDayCalendar calendar)
     {
         int businessDays = calendar.CountBusinessDaysBetween(startDate, endDate);
-        return businessDays / 252;
+        return businessDays / 252.0;
     }
       
 }

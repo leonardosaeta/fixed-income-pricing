@@ -52,4 +52,15 @@ public class PostFixedCDB:IInstrument
         double acrrualFactor = 1 + (cdiFactor - 1) * _percentualCdi;
         return _notional * acrrualFactor;
     }
+    
+    public double AccruedValue(DateTime asOfDate)
+    {
+        if (asOfDate < IssueDate)
+            throw new ArgumentException("asOfDate cannot be before IssueDate");
+
+        DateTime cutoff = asOfDate > MaturityDate ? MaturityDate : asOfDate;
+        double cdiFactor = _cdiIndex.AccrualFactor(IssueDate, cutoff);
+        double accrualFactor = 1 + (cdiFactor - 1) * _percentualCdi;
+        return _notional * accrualFactor;
+    }
 }
