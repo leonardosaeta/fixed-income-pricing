@@ -63,4 +63,6 @@ public class PostFixedCDB:IInstrument
         double accrualFactor = 1 + (cdiFactor - 1) * _percentualCdi;
         return _notional * accrualFactor;
     }
+    
+    public PostFixedCDB WithIndex(IIndex newIndex) => new PostFixedCDB(Id, IssueDate, MaturityDate, _notional, _percentualCdi, newIndex);
 }

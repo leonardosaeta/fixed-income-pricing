@@ -8,6 +8,8 @@ using fixed_income_pricing.Indices;
 using fixed_income_pricing.Instruments.Bank;
 using fixed_income_pricing.Instruments.Government;
 using fixed_income_pricing.MarketData.Interface;
+using fixed_income_pricing.Pricing;
+using fixed_income_pricing.Risk;
 
 var calendar = new B3Calendar(2020, 2030);
 var dayCount = new Bus252();
@@ -31,3 +33,24 @@ Console.WriteLine($"Interpolated DF at 2027-06-01: {curve.DiscountFactor(new Dat
 
 double impliedPrice = ltn1.FaceValue * curve.DiscountFactor(ltn1.MaturityDate);
 Console.WriteLine($"Round-trip check: {impliedPrice:F2} (input was 920.50)");
+
+var bondEngine = new GovernmentBondPricingEngine();
+var bondResult = bondEngine.Price(ltn1, curve, referenceDate);
+Console.WriteLine($"LTN PV: {bondResult.presentValue:F2}");
+
+var cdiRates = new Dictionary<DateTime, double> { [calendar.AddBusinessDay(referenceDate, 1)] = 0.1075 };
+var cdiIndex = new CDIIndex(cdiRates, calendar);
+var cdb = new PostFixedCDB("CDB-2027", referenceDate, new DateTime(2027, 1, 1), notional: 100000, percentualCdi: 1.0, cdiIndex);
+
+var cdbEngine = new CdbPricingEngine();
+var cdbResult = cdbEngine.Price(cdb, curve, referenceDate);
+Console.WriteLine($"CDB value today: {cdbResult.presentValue:F2}");
+
+
+var bondRisk = new GovernmentBondRiskEngine(bondEngine, dayCount, calendar);
+var ltnRisk = bondRisk.Compute(ltn1, curve, referenceDate);
+Console.WriteLine($"LTN — Mod. Duration: {ltnRisk.ModifiedDuration:F4}, Convexity: {ltnRisk.Convexity:F4}, DV01: {ltnRisk.Dv01:F4}");
+
+var cdbRisk = new CdbRiskEngine(cdbEngine, cdiIndex, dayCount, calendar);
+var cdbRiskResult = cdbRisk.Compute(cdb, curve, referenceDate);
+Console.WriteLine($"CDB — CDI DV01: {cdbRiskResult.Dv01:F4}");

@@ -49,7 +49,7 @@ public class DiscountCurve:IYieldCurve
        if(t<= 0)
            return 0;
        double lnDf = _interpolator.Interpolate(_pillarT, _pillarLnDf, t);
-       return lnDf;
+       return Math.Exp(lnDf);
    }
 
 
