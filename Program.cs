@@ -8,6 +8,7 @@ using fixed_income_pricing.Indices;
 using fixed_income_pricing.Instruments.Bank;
 using fixed_income_pricing.Instruments.Government;
 using fixed_income_pricing.MarketData.Interface;
+using fixed_income_pricing.Portfolio;
 using fixed_income_pricing.Pricing;
 using fixed_income_pricing.Risk;
 
@@ -46,11 +47,26 @@ var cdbEngine = new CdbPricingEngine();
 var cdbResult = cdbEngine.Price(cdb, curve, referenceDate);
 Console.WriteLine($"CDB value today: {cdbResult.presentValue:F2}");
 
+var bondPricing = new GovernmentBondPricingEngine();
+var bondRisk = new GovernmentBondRiskEngine(bondPricing, dayCount, calendar);
+var cdbPricing = new CdbPricingEngine();
+var cdbRisk = new CdbRiskEngine(cdbPricing, cdiIndex, dayCount, calendar);
 
-var bondRisk = new GovernmentBondRiskEngine(bondEngine, dayCount, calendar);
-var ltnRisk = bondRisk.Compute(ltn1, curve, referenceDate);
-Console.WriteLine($"LTN — Mod. Duration: {ltnRisk.ModifiedDuration:F4}, Convexity: {ltnRisk.Convexity:F4}, DV01: {ltnRisk.Dv01:F4}");
+var ltnPricingResult = bondPricing.Price(ltn1, curve, referenceDate);
+var ltnRiskResult = bondRisk.Compute(ltn1, curve, referenceDate);
+var ltnPosition = PositionFactory.FromResults(quantity: 500, ltnPricingResult, ltnRiskResult);
 
-var cdbRisk = new CdbRiskEngine(cdbEngine, cdiIndex, dayCount, calendar);
+var cdbPricingResult = cdbPricing.Price(cdb, curve, referenceDate);
 var cdbRiskResult = cdbRisk.Compute(cdb, curve, referenceDate);
-Console.WriteLine($"CDB — CDI DV01: {cdbRiskResult.Dv01:F4}");
+var cdbPosition = PositionFactory.FromResults(quantity: 1, cdbPricingResult, cdbRiskResult);
+
+var portfolio = new Portfolio("PORT-001");
+portfolio.AddPosition(ltnPosition);
+portfolio.AddPosition(cdbPosition);
+
+var report = portfolio.BuildReport(referenceDate);
+
+Console.WriteLine($"Portfolio {report.PortfolioId} as of {report.ValuationDate:yyyy-MM-dd}");
+Console.WriteLine($"Total PV: {report.TotalPresentValue:F2}");
+Console.WriteLine($"Total DV01: {report.TotalDv01:F4}");
+Console.WriteLine($"Weighted Avg Duration (bonds only): {report.WeightedAverageModifiedDuration:F4}");
