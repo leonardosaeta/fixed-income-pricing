@@ -1,2 +1,10 @@
 <Solution>
+  <Folder Name="/src/">
+    <Project Path="src/FixedIncome.Core/FixedIncome.Core.csproj" />
+    <Project Path="src/FixedIncome.MarketData/FixedIncome.MarketData.csproj" />
+    <Project Path="src/FixedIncome.Sandbox/FixedIncome.Sandbox.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/FixedIncome.Core.Tests/FixedIncome.Core.Tests.csproj" />
+  </Folder>
 </Solution>
