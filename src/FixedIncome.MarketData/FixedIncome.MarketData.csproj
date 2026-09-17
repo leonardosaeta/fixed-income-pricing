@@ -4,6 +4,18 @@
     <ProjectReference Include="..\FixedIncome.Core\FixedIncome.Core.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Instruments\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Instruments\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Instruments\**" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

@@ -14,62 +14,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea5e9e70-5641-43de-9c32-22186835c1a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.fixed-income-pricing/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.fixed-income-pricing/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.fixed-income-pricing/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.fixed-income-pricing/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/indexLayout.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CashFlows/Cashflow.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Curvers/DiscountCurve.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Curvers/FlatForwardInterpolator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Curvers/Interface/ICurveBootstrapper.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Curvers/Interface/IInterpolator.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Curvers/Interface/IYieldCurve.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Curvers/ParallelShiftedCurve.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dates/B3Calendar.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dates/Bus252.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dates/Interface/IBusinessDayCalendar.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dates/Interface/IDayCountConvention.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Dates/Schedule.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FixedIncome.core.csproj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/FixedIncome.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/FixedIncome.slnx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Indices/CDIIndex.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Indices/DailyCompoundingIndex.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Indices/IPCAIndex.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Indices/Interface/IIndex.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Indices/SelicIndex.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Indices/ShiftedIndex.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Instruments/Bank/PostFixedCDB.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Instruments/Government/Ltn.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Instruments/Interface/IInstrument.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarketData/BcbApiSource.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarketData/CsvRateDataSource.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarketData/Interface/IRateDataSource.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/MarketData/IpcaIndexNumberBuilder.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Portfolio/Portfolio.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Portfolio/PortfolioRiskReport.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Portfolio/Position.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Portfolio/PositionFactory.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pricing/CdbPricingEngine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pricing/GovernmentBondPricingEngine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pricing/Interface/IPricingEngine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Pricing/PricingResult.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Program.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Risk/CdbRiskEngine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Risk/GovernmentBondRiskEngine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Risk/Interface/IRiskEngine.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Risk/RiskMetric.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixed-income-pricing.sln.DotSettings.user" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/fixed-income-pricing.slnx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/FixedIncome.Core.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/FixedIncome.Core.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/UnitTest1.cs" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FixedIncome.MarketData/Anbima/AnbimaSecondaryMarketFile.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FixedIncome.MarketData/Instruments/LtnTests.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.MarketData/FixedIncome.MarketData.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.MarketData/FixedIncome.MarketData.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Dates/B3CalendarTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Dates/B3CalendarTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,76 +34,83 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/Anbima/AnbimaSecondaryMarketFile.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/Instruments/LtnTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
     <urls />
   </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="0.0" />
-      <entry key="S5" value="0.0" />
-      <entry key="S10" value="0.0" />
-      <entry key="S30" value="0.0" />
-      <entry key="S60" value="0.0" />
-      <entry key="M2" value="0.0" />
-      <entry key="M5" value="0.0" />
-      <entry key="M10" value="0.0" />
-      <entry key="M15" value="0.0" />
-      <entry key="M30" value="0.0" />
-      <entry key="H1" value="0.0" />
-      <entry key="H2" value="0.0" />
-      <entry key="H4" value="0.0" />
-      <entry key="D1" value="0.0" />
-      <entry key="W1" value="0.0" />
+      <entry key="MS100" value="4.882812503725841E-4" />
+      <entry key="MS500" value="0.22700017233869363" />
+      <entry key="S2" value="1.5609051511079264" />
+      <entry key="S5" value="3.0822280953009527" />
+      <entry key="S10" value="4.150067731266895" />
+      <entry key="S30" value="7.443348587118484" />
+      <entry key="S60" value="15.405510714613525" />
+      <entry key="M2" value="30.65658296333989" />
+      <entry key="M5" value="62.45844651833714" />
+      <entry key="M10" value="106.70867866669073" />
+      <entry key="M15" value="146.59946669274794" />
+      <entry key="M30" value="231.5768109629697" />
+      <entry key="H1" value="311.94322432852044" />
+      <entry key="H2" value="369.231762839337" />
+      <entry key="H4" value="403.80796638107574" />
+      <entry key="D1" value="438.4840459597982" />
+      <entry key="W1" value="446.5031398533522" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="1.0" />
       <entry key="MS500" value="1.0" />
       <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0" />
-      <entry key="M5" value="1.0" />
-      <entry key="M10" value="1.0" />
-      <entry key="M15" value="1.0" />
-      <entry key="M30" value="1.0" />
-      <entry key="H1" value="1.0" />
-      <entry key="H2" value="1.0" />
-      <entry key="H4" value="1.0" />
-      <entry key="D1" value="1.0" />
-      <entry key="W1" value="1.0" />
+      <entry key="S5" value="1.0000000063231729" />
+      <entry key="S10" value="1.0001632542061574" />
+      <entry key="S30" value="1.1707392485782988" />
+      <entry key="S60" value="2.0776568485273224" />
+      <entry key="M2" value="4.481485701785879" />
+      <entry key="M5" value="11.73416813528756" />
+      <entry key="M10" value="21.744376723476062" />
+      <entry key="M15" value="29.499223443527328" />
+      <entry key="M30" value="43.44943732348167" />
+      <entry key="H1" value="54.75952250025734" />
+      <entry key="H2" value="62.1246630039814" />
+      <entry key="H4" value="66.36394639381615" />
+      <entry key="D1" value="70.6707070101753" />
+      <entry key="W1" value="71.78361403997381" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="9.445587118789006E-5" />
-      <entry key="MS500" value="0.1566916275550863" />
-      <entry key="S2" value="0.6291604985499613" />
-      <entry key="S5" value="0.8308154786946231" />
-      <entry key="S10" value="0.9114908001151867" />
-      <entry key="S30" value="0.9695810002149576" />
-      <entry key="S60" value="0.9846730422911747" />
-      <entry key="M2" value="0.9923069294785635" />
-      <entry key="M5" value="0.9969156405055168" />
-      <entry key="M10" value="0.9984566292561319" />
-      <entry key="M15" value="0.9989708213231283" />
-      <entry key="M30" value="0.9994852781922945" />
-      <entry key="H1" value="0.999742605970304" />
-      <entry key="H2" value="0.9998712947026253" />
-      <entry key="H4" value="0.9999356452805477" />
-      <entry key="D1" value="0.999989273925807" />
-      <entry key="W1" value="0.9999984676966429" />
+      <entry key="MS100" value="5.343715106666677E-4" />
+      <entry key="MS500" value="0.2645991949819131" />
+      <entry key="S2" value="1.9702285903507664" />
+      <entry key="S5" value="3.7662808282785867" />
+      <entry key="S10" value="4.962321089768317" />
+      <entry key="S30" value="8.508025655816475" />
+      <entry key="S60" value="17.35929093821136" />
+      <entry key="M2" value="34.98660236160591" />
+      <entry key="M5" value="74.02485183637981" />
+      <entry key="M10" value="128.29186575908156" />
+      <entry key="M15" value="175.94936976876375" />
+      <entry key="M30" value="274.9119181813892" />
+      <entry key="H1" value="366.62867698790586" />
+      <entry key="H2" value="431.31371758454685" />
+      <entry key="H4" value="470.1488948916955" />
+      <entry key="D1" value="509.15060682173294" />
+      <entry key="W1" value="518.2861477159363" />
     </decayedShown>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2,
-  "fromUser": false
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2,
+  &quot;fromUser&quot;: false
+}</component>
   <component name="ProjectId" id="3JN7dw08rkiBAhQvMOz16k19j00" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -180,14 +138,15 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
     "to.speed.mode.migration.done": "true"
   }
 }]]></component>
   <component name="RunManager">
     <configuration name="FixedIncome.Sandbox" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/bin/Debug/net10.0/FixedIncome.Core.Tests.dll" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/bin/Debug/net10.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
@@ -195,12 +154,12 @@
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/src/FixedIncome.Sandbox/FixedIncome.Sandbox.csproj" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/FixedIncome.Core.Tests.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
       <option name="PROJECT_KIND" value="DotNetCore" />
-      <option name="PROJECT_TFM" value="" />
+      <option name="PROJECT_TFM" value="net10.0" />
       <method v="2">
         <option name="Build" />
       </method>
@@ -219,6 +178,7 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
@@ -240,5 +200,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -16,7 +16,6 @@ public class B3CalendarTests
     [Fact]
     public void IsBusinessDays_ReturnsFalse_ForWeekend()
     {
-        // 2025-01-04 is a Saturday
         _calendar.IsBusinessDays(new DateTime(2025, 1, 4)).Should().BeFalse();
     }
 
