@@ -7,7 +7,7 @@ namespace FixedIncome.MarketData.Anbima;
 public sealed record AnbimaQuote(
     string Instrument,
     DateOnly ReferenceDate,
-    DateOnly ExpirationDate,
+    DateOnly Maturity,
     decimal IndicativeRate,
     decimal Pu);
 
