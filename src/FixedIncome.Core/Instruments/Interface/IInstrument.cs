@@ -7,7 +7,7 @@ namespace fixed_income_pricing.Instruments;
 public interface IInstrument
 {
     string Id {get;}
-    DateTime IssueDate {get;}
-    DateTime MaturityDate {get;}
-    IEnumerable<Cashflow> GenerateCashflows(DateTime valuationDate);
+    DateOnly IssueDate {get;}
+    DateOnly MaturityDate {get;}
+    IEnumerable<Cashflow> GenerateCashflows(DateOnly valuationDate);
 }

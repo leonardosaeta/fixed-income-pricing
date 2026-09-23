@@ -4,7 +4,7 @@ namespace fixed_income_pricing.Indices;
 
 public class SelicIndex : DailyCompoundingIndex
 {
-    public SelicIndex(IReadOnlyDictionary<DateTime, double> dailyRates, IBusinessDayCalendar calendar) : base("Selic",
+    public SelicIndex(IReadOnlyDictionary<DateOnly, double> dailyRates, IBusinessDayCalendar calendar) : base("Selic",
         dailyRates, calendar)
     {
     }

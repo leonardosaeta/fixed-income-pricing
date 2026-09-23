@@ -6,7 +6,7 @@ namespace fixed_income_pricing.Pricing;
 
 public class GovernmentBondPricingEngine:IPricingEngine<Ltn>
 {
-    public PricingResult Price(Ltn instrument, IYieldCurve curve, DateTime valuationDate)
+    public PricingResult Price(Ltn instrument, IYieldCurve curve, DateOnly valuationDate)
     {
         if(curve.ReferenceDate != valuationDate)
             throw new ArgumentException("Curve must match valuation date");

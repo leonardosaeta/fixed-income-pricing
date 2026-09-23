@@ -17,14 +17,14 @@ public class CsvRateDataSource : IRateDataSource
         _filePath = filePath;
     }
 
-    public IReadOnlyDictionary<DateTime, double> GetDailyRates(int seriesCode, DateTime startDate, DateTime endDate)
+    public IReadOnlyDictionary<DateOnly, double> GetDailyRates(int seriesCode, DateOnly startDate, DateOnly endDate)
     {
-        var result = new Dictionary<DateTime, double>();
+        var result = new Dictionary<DateOnly, double>();
         foreach (var line in File.ReadLines(_filePath).Skip(1))
         {
             if (string.IsNullOrWhiteSpace(line)) continue;
             var parts = line.Split(',');
-            DateTime date = DateTime.ParseExact(parts[0], "yyyy-MM-dd", CultureInfo.InvariantCulture);
+            DateOnly date = DateOnly.ParseExact(parts[0], "yyyy-MM-dd", CultureInfo.InvariantCulture);
             double rate = double.Parse(parts[1], CultureInfo.InvariantCulture);
 
             if (date >= startDate && date <= endDate) result[date] = rate;
@@ -32,8 +32,8 @@ public class CsvRateDataSource : IRateDataSource
 
         return result;
     }
-    
-    public static void WriteCsv(IReadOnlyDictionary<DateTime, double> rates, string filePath)
+
+    public static void WriteCsv(IReadOnlyDictionary<DateOnly, double> rates, string filePath)
     {
         using var writer = new StreamWriter(filePath);
         writer.WriteLine("date,rate");

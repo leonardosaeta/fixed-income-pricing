@@ -12,8 +12,8 @@ public class Bus252Tests
     [Fact]
     public void YearFraction_DividesBusinessDaysBy252()
     {
-        var start = new DateTime(2025, 1, 2);
-        var end = new DateTime(2025, 1, 6);
+        var start = new DateOnly(2025, 1, 2);
+        var end = new DateOnly(2025, 1, 6);
 
         // 2 business days between start and end (2025-01-03 and 2025-01-06)
         _convention.YearFraction(start, end, _calendar).Should().Be(2 / 252.0);
@@ -22,7 +22,7 @@ public class Bus252Tests
     [Fact]
     public void YearFraction_IsZero_WhenStartEqualsEnd()
     {
-        var date = new DateTime(2025, 1, 2);
+        var date = new DateOnly(2025, 1, 2);
 
         _convention.YearFraction(date, date, _calendar).Should().Be(0);
     }

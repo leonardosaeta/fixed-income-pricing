@@ -20,7 +20,7 @@ public class ShiftedIndex:IIndex
         _calendar = calendar;
     }
 
-    public double AccrualFactor(DateTime start, DateTime end)
+    public double AccrualFactor(DateOnly start, DateOnly end)
     {
         double baseFactor = _baseIndex.AccrualFactor(start, end);
         double t = _dayCount.YearFraction(start, end, _calendar);

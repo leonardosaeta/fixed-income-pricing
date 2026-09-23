@@ -9,12 +9,12 @@ public abstract class DailyCompoundingIndex : IIndex
 {
     public string Name  { get; }
 
-    private readonly IReadOnlyDictionary<DateTime, double> _dailyRates;
+    private readonly IReadOnlyDictionary<DateOnly, double> _dailyRates;
     private readonly IBusinessDayCalendar _calendar;
-    
+
     protected DailyCompoundingIndex(
         string name,
-        IReadOnlyDictionary<DateTime, double> dailyRates,
+        IReadOnlyDictionary<DateOnly, double> dailyRates,
         IBusinessDayCalendar calendar)
     {
       Name   = name;
@@ -22,9 +22,9 @@ public abstract class DailyCompoundingIndex : IIndex
       _calendar = calendar;
     }
 
-    private double DailyFactor(DateTime date, ref double lastKnownRate)
+    private double DailyFactor(DateOnly date, ref double lastKnownRate)
     {
-        if (_dailyRates.TryGetValue(date.Date, out double annualRate))
+        if (_dailyRates.TryGetValue(date, out double annualRate))
         {
             lastKnownRate = annualRate;
         }
@@ -36,13 +36,13 @@ public abstract class DailyCompoundingIndex : IIndex
         return Math.Pow(1 + lastKnownRate, 1.0/252.0);
     }
 
-    public double AccrualFactor(DateTime startDate, DateTime endDate)
+    public double AccrualFactor(DateOnly startDate, DateOnly endDate)
     {
         if (startDate > endDate) throw new ArgumentException("startDate must <= endDate");
 
         double factor = 1.0;
         double lastKnownRate = double.NaN;
-        DateTime current =  startDate.Date;
+        DateOnly current =  startDate;
 
         while (current <= endDate)
         {

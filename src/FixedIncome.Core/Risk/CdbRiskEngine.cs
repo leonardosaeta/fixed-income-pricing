@@ -28,7 +28,7 @@ public class CdbRiskEngine:IRiskEngine<PostFixedCDB>
         _calendar = calendar;
     }
 
-    public RiskMetric Compute(PostFixedCDB Instrument, IYieldCurve Curve, DateTime ValuationDate)
+    public RiskMetric Compute(PostFixedCDB Instrument, IYieldCurve Curve, DateOnly ValuationDate)
     {
         double basePv = _pricingEngine.Price(Instrument, Curve, ValuationDate).presentValue;
 

@@ -7,12 +7,12 @@ namespace fixed_income_pricing.Instruments.Government;
 public class Ltn:IInstrument
 {
     public string Id {get;}
-    public DateTime IssueDate {get;}
-    public DateTime MaturityDate {get;}
-    
+    public DateOnly IssueDate {get;}
+    public DateOnly MaturityDate {get;}
+
     public double FaceValue {get;}
 
-    public Ltn(string id, DateTime issueDate, DateTime maturityDate, double faceValue = 1000.0)
+    public Ltn(string id, DateOnly issueDate, DateOnly maturityDate, double faceValue = 1000.0)
     {
         if (maturityDate <= issueDate)
             throw new ArgumentException("maturityDate must be greater than issueDate");
@@ -25,7 +25,7 @@ public class Ltn:IInstrument
         FaceValue = faceValue;
     }
 
-    public IEnumerable<Cashflow> GenerateCashflows(DateTime valuationDate)
+    public IEnumerable<Cashflow> GenerateCashflows(DateOnly valuationDate)
     {
         if (valuationDate >= MaturityDate)
             yield break;

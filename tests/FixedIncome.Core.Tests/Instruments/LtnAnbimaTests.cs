@@ -25,15 +25,12 @@ public class LtnAnbimaTests
         return data;
     }
 
-
     [Theory]
     [MemberData(nameof(LtnQuotes))]
     public void Ltn_Pu_Matches_Anbima(
         DateOnly referenceDate, DateOnly maturity, decimal rate, decimal expectedPu)
     {
-        var du = Calendar.CountBusinessDaysBetween(
-            referenceDate.ToDateTime(TimeOnly.MinValue),
-            maturity.ToDateTime(TimeOnly.MinValue));
+        var du = Calendar.CountBusinessDaysBetween(referenceDate, maturity);
 
         var pu = Face / (decimal)Math.Pow(1.0 + (double)rate, du / 252.0);
         pu.Should().BeApproximately(expectedPu, Tolerance, $"LTN {maturity:dd/MM/yyyy} at {rate:p4}, du={du}");

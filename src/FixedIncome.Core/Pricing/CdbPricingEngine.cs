@@ -6,7 +6,7 @@ namespace fixed_income_pricing.Pricing;
 
 public class CdbPricingEngine:IPricingEngine<PostFixedCDB>
 {
-    public PricingResult Price(PostFixedCDB instruement, IYieldCurve curve, DateTime valuationDate)
+    public PricingResult Price(PostFixedCDB instruement, IYieldCurve curve, DateOnly valuationDate)
     {
         if(curve.ReferenceDate != valuationDate)
             throw new ArgumentException("Curve must match valuation date");

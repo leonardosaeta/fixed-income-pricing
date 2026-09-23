@@ -15,7 +15,7 @@ public class Portfolio
     public void AddPosition(Position position) => _positions.Add(position);
     public IReadOnlyList<Position> Positions => _positions;
 
-    public PortfolioRiskReport BuildReport(DateTime valuationDate)
+    public PortfolioRiskReport BuildReport(DateOnly valuationDate)
     {
         if (_positions.Count == 0)
             throw new InvalidDataContractException("Portfolio has no position");

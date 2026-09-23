@@ -13,9 +13,9 @@ public enum BusinessDayConvention
 
 public class Schedule
 {
-    public static List<DateTime> GenerateCouponDates(
-        DateTime issueDate,
-        DateTime maturityDate,
+    public static List<DateOnly> GenerateCouponDates(
+        DateOnly issueDate,
+        DateOnly maturityDate,
         int couponsPerYear,
         IBusinessDayCalendar calendar,
         BusinessDayConvention convention = BusinessDayConvention.Following)
@@ -26,23 +26,23 @@ public class Schedule
         }
 
         int monthsBetweenCoupons = 12 / couponsPerYear;
-        var rawDate = new List<DateTime>();
-        
-        DateTime current = maturityDate;
+        var rawDate = new List<DateOnly>();
+
+        DateOnly current = maturityDate;
         while (current > issueDate)
         {
             rawDate.Insert(0, current);
             current = current.AddMonths(-monthsBetweenCoupons);
         }
-        
-        var adjustedDate = new List<DateTime>(rawDate.Count);
+
+        var adjustedDate = new List<DateOnly>(rawDate.Count);
         foreach (var date in rawDate)
             adjustedDate.Add(AdjustedToBusinessDay(date, calendar, convention));
         return adjustedDate;
     }
 
-    public static DateTime AdjustedToBusinessDay(
-        DateTime date,
+    public static DateOnly AdjustedToBusinessDay(
+        DateOnly date,
         IBusinessDayCalendar calendar,
         BusinessDayConvention convention)
     {
@@ -50,7 +50,7 @@ public class Schedule
             return date;
 
         int step = convention == BusinessDayConvention.Following ? 1 : -1;
-        DateTime adjusted = date;
+        DateOnly adjusted = date;
 
         while (!calendar.IsBusinessDays(adjusted))
         {

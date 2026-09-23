@@ -6,16 +6,16 @@ namespace fixed_income_pricing.MarketData;
 
 public class IpcaIndexNumberBuilder
 {
-    public static IReadOnlyDictionary<DateTime, double> BuildIndexNumber(
-        IReadOnlyDictionary<DateTime, double> monthlyPercentVariation,
+    public static IReadOnlyDictionary<DateOnly, double> BuildIndexNumber(
+        IReadOnlyDictionary<DateOnly, double> monthlyPercentVariation,
         double baseValue = 100.0)
     {
-        var result = new Dictionary<DateTime, double>();
+        var result = new Dictionary<DateOnly, double>();
         double runningValue = baseValue;
 
         foreach (var kvp in monthlyPercentVariation.OrderBy(k => k.Key))
         {
-            DateTime referenceMonth = new DateTime(kvp.Key.Year, kvp.Key.Month, 1);
+            DateOnly referenceMonth = new DateOnly(kvp.Key.Year, kvp.Key.Month, 1);
             runningValue *= (1 + kvp.Value);
             result[referenceMonth] = runningValue;
         }

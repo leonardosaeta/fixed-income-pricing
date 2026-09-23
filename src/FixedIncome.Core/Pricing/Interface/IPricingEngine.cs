@@ -7,5 +7,5 @@ namespace fixed_income_pricing.Pricing.Interface;
 
 public interface IPricingEngine<in TIntrument> where TIntrument :IInstrument
 {
-    PricingResult Price(TIntrument instrument, IYieldCurve curve, DateTime valuationDate);
+    PricingResult Price(TIntrument instrument, IYieldCurve curve, DateOnly valuationDate);
 }

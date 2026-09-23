@@ -5,7 +5,7 @@ namespace fixed_income_pricing.Curvers;
 
 public class DiscountCurve:IYieldCurve
 {
-   public DateTime ReferenceDate { get; }
+   public DateOnly ReferenceDate { get; }
 
    private readonly IBusinessDayCalendar _calendar;
    private readonly IDayCountConvention _dayCountConvention;
@@ -15,10 +15,10 @@ public class DiscountCurve:IYieldCurve
    private readonly double[] _pillarLnDf;
 
    public DiscountCurve(
-       DateTime referenceDate,
+       DateOnly referenceDate,
        IBusinessDayCalendar calendar,
        IDayCountConvention daycountConvention,
-       IEnumerable<(DateTime date, double zeroRate)> pillars,
+       IEnumerable<(DateOnly date, double zeroRate)> pillars,
        IInterpolator interpolator)
    {
        ReferenceDate =  referenceDate;
@@ -43,7 +43,7 @@ public class DiscountCurve:IYieldCurve
    }
 
 
-   public double DiscountFactor(DateTime date)
+   public double DiscountFactor(DateOnly date)
    {
        double t = _dayCountConvention.YearFraction(ReferenceDate, date, _calendar);
        if(t<= 0)
@@ -53,7 +53,7 @@ public class DiscountCurve:IYieldCurve
    }
 
 
-   public double ZeroRate(DateTime date)
+   public double ZeroRate(DateOnly date)
    {
        double t = _dayCountConvention.YearFraction(ReferenceDate, date, _calendar);
        if (t <= 0)

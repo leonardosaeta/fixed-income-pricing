@@ -12,7 +12,7 @@ public class ParallelShiftedCurve: IYieldCurve
     private readonly IDayCountConvention _dayCount;
     private readonly IBusinessDayCalendar _calendar;
 
-    public DateTime ReferenceDate => _baseCurve.ReferenceDate;
+    public DateOnly ReferenceDate => _baseCurve.ReferenceDate;
 
     public ParallelShiftedCurve(IYieldCurve baseCurve, double shift, IDayCountConvention dayCount,
         IBusinessDayCalendar calendar)
@@ -23,9 +23,9 @@ public class ParallelShiftedCurve: IYieldCurve
         _calendar = calendar;
     }
 
-    public double ZeroRate(DateTime date) => _baseCurve.ZeroRate(date) + _shift;
+    public double ZeroRate(DateOnly date) => _baseCurve.ZeroRate(date) + _shift;
 
-    public double DiscountFactor(DateTime date)
+    public double DiscountFactor(DateOnly date)
     {
         double t = _dayCount.YearFraction(ReferenceDate, date, _calendar);
         {

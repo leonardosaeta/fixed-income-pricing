@@ -10,29 +10,29 @@ public class B3CalendarTests
     [Fact]
     public void IsHoliday_ReturnsTrue_ForFixedNationalHoliday()
     {
-        _calendar.IsHoliday(new DateTime(2025, 1, 1)).Should().BeTrue();
+        _calendar.IsHoliday(new DateOnly(2025, 1, 1)).Should().BeTrue();
     }
 
     [Fact]
     public void IsBusinessDays_ReturnsFalse_ForWeekend()
     {
-        _calendar.IsBusinessDays(new DateTime(2025, 1, 4)).Should().BeFalse();
+        _calendar.IsBusinessDays(new DateOnly(2025, 1, 4)).Should().BeFalse();
     }
 
     [Fact]
     public void AddBusinessDay_SkipsWeekend()
     {
         // 2025-01-03 is a Friday, next business day should be Monday 2025-01-06
-        var result = _calendar.AddBusinessDay(new DateTime(2025, 1, 3), 1);
+        var result = _calendar.AddBusinessDay(new DateOnly(2025, 1, 3), 1);
 
-        result.Should().Be(new DateTime(2025, 1, 6));
+        result.Should().Be(new DateOnly(2025, 1, 6));
     }
 
     [Fact]
     public void CountBusinessDaysBetween_IsSymmetricUnderSwap()
     {
-        var start = new DateTime(2025, 1, 2);
-        var end = new DateTime(2025, 1, 6);
+        var start = new DateOnly(2025, 1, 2);
+        var end = new DateOnly(2025, 1, 6);
 
         _calendar.CountBusinessDaysBetween(start, end)
             .Should().Be(-_calendar.CountBusinessDaysBetween(end, start));

@@ -13,7 +13,7 @@ public interface ICurveBootstrapper
 
     public interface ICurveBoostrapper
     {
-        IYieldCurve Boostrap(DateTime referenceDate, IEnumerable<LtnQuote> quotes);
+        IYieldCurve Boostrap(DateOnly referenceDate, IEnumerable<LtnQuote> quotes);
     }
 
 
@@ -34,9 +34,9 @@ public interface ICurveBootstrapper
         }
 
 
-        public IYieldCurve Bootstrap(DateTime referenceDate, IEnumerable<LtnQuote> quotes)
+        public IYieldCurve Bootstrap(DateOnly referenceDate, IEnumerable<LtnQuote> quotes)
         {
-            var pillars = new List<(DateTime date, double zeroRate)>();
+            var pillars = new List<(DateOnly date, double zeroRate)>();
             foreach (var quote in quotes)
             {
                 double t = _dayCountConvention.YearFraction(referenceDate, quote.Instrument.MaturityDate, _calendar);

@@ -7,7 +7,7 @@ namespace fixed_income_pricing.Indices;
 
 public class CDIIndex : DailyCompoundingIndex
 {
-    public CDIIndex(IReadOnlyDictionary<DateTime, double> dailyRates, IBusinessDayCalendar calendar):base("CDI", dailyRates, calendar)
+    public CDIIndex(IReadOnlyDictionary<DateOnly, double> dailyRates, IBusinessDayCalendar calendar):base("CDI", dailyRates, calendar)
     {
     }
 }

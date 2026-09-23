@@ -1,6 +1,4 @@
-using System;
-
 namespace fixed_income_pricing.CashFlows
 {
-public record class Cashflow(DateTime PaymentDate, double Amount);
+public record class Cashflow(DateOnly PaymentDate, double Amount);
 }

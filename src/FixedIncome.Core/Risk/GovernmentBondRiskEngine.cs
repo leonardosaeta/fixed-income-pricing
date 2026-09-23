@@ -26,7 +26,7 @@ public class GovernmentBondRiskEngine:IRiskEngine<Ltn>
         _calendar = calendar;
     }
 
-    public RiskMetric Compute(Ltn instrument, IYieldCurve curve, DateTime valuationDate)
+    public RiskMetric Compute(Ltn instrument, IYieldCurve curve, DateOnly valuationDate)
     {
 
         double basePv = _pricingEngine.Price(instrument, curve, valuationDate).presentValue;
