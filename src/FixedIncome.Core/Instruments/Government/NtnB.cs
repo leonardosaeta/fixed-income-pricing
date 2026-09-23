@@ -18,7 +18,9 @@ public class NtnB
         {
             var flow = SemiAnnualCupon + (i == dates.Count - 1 ? 1m : 0m);
             var du = calendar.CountBusinessDaysBetween(settlement, dates[i]);
+            sum+=flow / (decimal)Math.Pow(onePlusR, du/252.0);
         }
+        return sum;
     }
     
 }
