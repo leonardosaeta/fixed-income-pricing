@@ -1,4 +1,5 @@
 using fixed_income_pricing.Dates.Interface;
+using fixed_income_pricing.Pricing;
 
 namespace fixed_income_pricing.Instruments.Government;
 
@@ -22,5 +23,7 @@ public class NtnB
         }
         return sum;
     }
+    public decimal Price(DateOnly settlement, decimal realRate, decimal projectedVna, IBusinessDayCalendar calendar) => 
+        Rounding.Truncate(projectedVna*Cotacao(settlement, realRate, calendar), 6);
     
 }
