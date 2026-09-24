@@ -14,6 +14,7 @@ public sealed record AnbimaQuote(
 public static class AnbimaSecondaryMarketFile
 {
     private static readonly CultureInfo Br = CultureInfo.GetCultureInfo("pt-BR");
+    private static readonly string[] DateFormats = ["yyyyMMdd", "dd/MM/yyyy"];
     
     public static IReadOnlyList<AnbimaQuote> Parse(string path)
     {
@@ -25,19 +26,26 @@ public static class AnbimaSecondaryMarketFile
     {
         var quotes = new List<AnbimaQuote>();
         Dictionary<string, int>? cols = null;
+        var delimiter = ',';
 
         while (reader.ReadLine() is { } line)
         {
             if (line.Length == 0) continue;
-            var f = line.Split(',');
-            if (f.Length < 5) continue;
 
             if (cols is null)
             {
-                if (f.Any(x=>Normalize(x)=="titulo")) 
-                    cols = BuildColumnMap(f);
+                var d = line.Contains('@') ? '@' : ',';
+                var h = line.Split(d);
+                if (h.Length >= 5 && h.Any(x => Normalize(x) == "titulo"))
+                {
+                    delimiter = d;
+                    cols = BuildColumnMap(h);
+                }
                 continue;
             }
+
+            var f = line.Split(delimiter);
+            if (f.Length < 5) continue;
             
             var titulo = f[cols["titulo"]].Trim();
             if(titulo.Length==0) continue;
@@ -46,7 +54,7 @@ public static class AnbimaSecondaryMarketFile
                 titulo,
                 ParseDate(f[cols["datareferencia"]]),
                 ParseDate(f[cols["datavencimento"]]),
-                ParseDecimal(f[cols["txIndicativas"]]) /100m,
+                ParseDecimal(f[cols["txindicativas"]]) /100m,
                 ParseDecimal(f[cols["pu"]])));
         }
         if (cols is null)
@@ -56,7 +64,7 @@ public static class AnbimaSecondaryMarketFile
 
     private static decimal ParseDecimal(string s)=>decimal.Parse(s.Trim(),NumberStyles.Number, Br);
 
-    private static DateOnly ParseDate(string s) =>  DateOnly.ParseExact(s.Trim(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
+    private static DateOnly ParseDate(string s) =>  DateOnly.ParseExact(s.Trim(), DateFormats, CultureInfo.InvariantCulture);
 
     private static Dictionary<string, int>? BuildColumnMap(string[] header)
     {
@@ -68,7 +76,7 @@ public static class AnbimaSecondaryMarketFile
         }
 
         foreach (var required in new[]
-                     { "titulo", "datareferencia", "datavencimento", "txIndicativas", "pu" })
+                     { "titulo", "datareferencia", "datavencimento", "txindicativas", "pu" })
         {
             if (!map.ContainsKey(required))
             {
@@ -85,7 +93,7 @@ public static class AnbimaSecondaryMarketFile
         foreach (var ch in s.Trim().Normalize(NormalizationForm.FormD))
         {
             if (CharUnicodeInfo.GetUnicodeCategory(ch) == UnicodeCategory.NonSpacingMark) continue;
-            if (char.IsLetterOrDigit(ch)) sb.Append(ch);
+            if (char.IsLetterOrDigit(ch)) sb.Append(char.ToLowerInvariant(ch));
         }
         return sb.ToString();
         

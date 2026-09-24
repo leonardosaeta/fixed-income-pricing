@@ -27,4 +27,8 @@
     <ProjectReference Include="..\..\src\FixedIncome.MarketData\FixedIncome.MarketData.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="data\anbima\" />
+  </ItemGroup>
+
 </Project>

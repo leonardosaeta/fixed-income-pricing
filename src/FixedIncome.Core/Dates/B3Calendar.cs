@@ -28,7 +28,6 @@ public class B3Calendar : IBusinessDayCalendar
         {
             AddFixedNationalHoliday (holidays, year);
             AddMovableHoliday(holidays, year);
-            AddLocalCityHoliday(holidays, year);
         }
 
         return holidays;
@@ -43,6 +42,7 @@ public class B3Calendar : IBusinessDayCalendar
         holidays.Add(new DateOnly(year, 10, 12));
         holidays.Add(new DateOnly(year, 11, 2));
         holidays.Add(new DateOnly(year, 11, 15));
+        if (year >= 2024) holidays.Add(new DateOnly(year, 11, 20)); 
         holidays.Add(new DateOnly(year, 12, 25));
     }
 
@@ -50,16 +50,10 @@ public class B3Calendar : IBusinessDayCalendar
     {
         DateOnly easterSunday = ComputeEasternDate(year);
 
+        holidays.Add(easterSunday.AddDays(-48));
         holidays.Add(easterSunday.AddDays(-47));
-        holidays.Add(easterSunday.AddDays(-46));
         holidays.Add(easterSunday.AddDays(-2));
         holidays.Add(easterSunday.AddDays(60));
-    }
-
-    private static void AddLocalCityHoliday(HashSet<DateOnly> holidays, int year)
-    {
-        holidays.Add(new DateOnly(year, 2, 5));
-        holidays.Add(new DateOnly(year, 3, 5));
     }
 
     private static DateOnly ComputeEasternDate(int year)
@@ -70,14 +64,14 @@ public class B3Calendar : IBusinessDayCalendar
         int d  = b/4;
         int e = b % 4;
         int f = (b + 8) / 25;
-        int g = (b + f + 1) / 3;
+        int g = (b - f + 1) / 3;
         int h = (19 * a + b + -d - g + 15) % 30;
         int i = c / 4;
         int k = c % 4;
         int l = (32 + 2 * e + 2 * i - h - k) % 7;
-        int m = (a + 11 * h + 22 * 1) / 451;
-        int month = (h + 1 - 7 * m + 114) / 31;
-        int day = ((h + 1 - 7 * m + 114) % 31) + 1;
+        int m = (a + 11 * h + 22 * l) / 451;
+        int month = (h + l - 7 * m + 114) / 31;
+        int day = ((h + l - 7 * m + 114) % 31) + 1;
 
         return new DateOnly(year, month, day);
     }
@@ -120,7 +114,7 @@ public class B3Calendar : IBusinessDayCalendar
         DateOnly current = startDate;
         DateOnly end = endDate;
 
-        while (current <= end)
+        while (current < end)
         {
             current = current.AddDays(1);
             if (IsBusinessDays(current))
