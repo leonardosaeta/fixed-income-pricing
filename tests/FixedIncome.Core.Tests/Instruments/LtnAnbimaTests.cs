@@ -11,7 +11,7 @@ public class LtnAnbimaTests
 
     private static readonly B3Calendar Calendar = new(2020, 2050);
 
-    private static string DataFile => Path.Combine(AppContext.BaseDirectory, "Date", "anbima", "ms260915.txt");
+    private static string DataFile => Path.Combine(AppContext.BaseDirectory, "data", "anbima", "ms260915.txt");
 
     public static TheoryData<DateOnly, DateOnly, decimal, decimal> LtnQuotes()
     {

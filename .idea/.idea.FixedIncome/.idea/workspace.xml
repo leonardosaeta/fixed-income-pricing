@@ -14,9 +14,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea5e9e70-5641-43de-9c32-22186835c1a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/Rounding.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/IpcaVna.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/NtnBAnbimaTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NtnB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NtnB.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/FixedIncome.Core.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/FixedIncome.Core.Tests.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +32,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Indices/IpcaVna.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Instruments/CouponSchedule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NTNB.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NtnB.cs" root0="FORCE_HIGHLIGHTING" />
@@ -37,6 +40,7 @@
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/Anbima/AnbimaSecondaryMarketFile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/Instruments/LtnTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/Instruments.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
@@ -46,61 +50,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="2.2349784706826517E-52" />
-      <entry key="MS500" value="4.6757864738233904E-11" />
-      <entry key="S2" value="0.002636716745195335" />
-      <entry key="S5" value="0.12076379621488317" />
-      <entry key="S10" value="0.8509547422264989" />
-      <entry key="S30" value="8.05519783943599" />
-      <entry key="S60" value="18.420840715993744" />
-      <entry key="M2" value="29.493480282420318" />
-      <entry key="M5" value="42.16324321550987" />
-      <entry key="M10" value="58.897663041467524" />
-      <entry key="M15" value="76.30656758532082" />
-      <entry key="M30" value="117.91616692317638" />
-      <entry key="H1" value="160.56723942027457" />
-      <entry key="H2" value="193.4134066948225" />
-      <entry key="H4" value="245.08950626051922" />
-      <entry key="D1" value="769.2435136980661" />
-      <entry key="W1" value="1104.693492642553" />
+      <entry key="MS100" value="1.291183396617114" />
+      <entry key="MS500" value="1.7813278801723174" />
+      <entry key="S2" value="1.940174202509126" />
+      <entry key="S5" value="1.9756259249753851" />
+      <entry key="S10" value="1.9877377814862531" />
+      <entry key="S30" value="1.9958958768908859" />
+      <entry key="S60" value="2.0004522314390973" />
+      <entry key="M2" value="2.5220228412386536" />
+      <entry key="M5" value="17.77128496367482" />
+      <entry key="M10" value="57.245521183892215" />
+      <entry key="M15" value="91.58089547132374" />
+      <entry key="M30" value="164.14521972673057" />
+      <entry key="H1" value="238.52423517544284" />
+      <entry key="H2" value="297.3899167158973" />
+      <entry key="H4" value="364.3263516820581" />
+      <entry key="D1" value="901.8645399689375" />
+      <entry key="W1" value="1245.6235578953103" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0000000000027218" />
-      <entry key="S5" value="1.0000262499880317" />
-      <entry key="S10" value="1.0064823313714018" />
-      <entry key="S30" value="1.286891865696131" />
-      <entry key="S60" value="1.754357476011895" />
-      <entry key="M2" value="2.2279308622385683" />
-      <entry key="M5" value="2.801147246794395" />
-      <entry key="M10" value="4.272699899972256" />
-      <entry key="M15" value="6.486754031461062" />
-      <entry key="M30" value="12.841597406687189" />
-      <entry key="H1" value="20.00403925680387" />
-      <entry key="H2" value="25.67366817371384" />
-      <entry key="H4" value="33.1839529646422" />
-      <entry key="D1" value="102.09092614586775" />
-      <entry key="W1" value="146.3090171318444" />
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="5.973944089267797E-121" />
+      <entry key="S5" value="9.574803777589707E-49" />
+      <entry key="S10" value="1.6013546930964926E-24" />
+      <entry key="S30" value="4.0228012131570725E-8" />
+      <entry key="S60" value="6.900786724010506E-4" />
+      <entry key="M2" value="0.10268746239952017" />
+      <entry key="M5" value="2.2524823237699905" />
+      <entry key="M10" value="6.801042612239637" />
+      <entry key="M15" value="10.564544749534507" />
+      <entry key="M30" value="19.223902745945423" />
+      <entry key="H1" value="29.26628053099476" />
+      <entry key="H2" value="37.796741482728315" />
+      <entry key="H4" value="47.14091569796721" />
+      <entry key="D1" value="117.74036586744262" />
+      <entry key="W1" value="163.03868633494798" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.2135898704187945E-10" />
-      <entry key="MS500" value="0.010394758161829444" />
-      <entry key="S2" value="0.32163062823695315" />
-      <entry key="S5" value="0.7484778498160392" />
-      <entry key="S10" value="1.6327248479526233" />
-      <entry key="S30" value="9.183055239136172" />
-      <entry key="S60" value="20.033395467789987" />
-      <entry key="M2" value="31.61724878671225" />
-      <entry key="M5" value="44.906031540228426" />
-      <entry key="M10" value="63.124542468489" />
-      <entry key="M15" value="82.74895506898926" />
-      <entry key="M30" value="130.71808384091327" />
-      <entry key="H1" value="180.5423530508043" />
-      <entry key="H2" value="219.06913188315562" />
-      <entry key="H4" value="278.26188884947817" />
-      <entry key="D1" value="871.328185693015" />
-      <entry key="W1" value="1251.0012159133846" />
+      <entry key="MS100" value="1.186280196238215" />
+      <entry key="MS500" value="1.7508751220266918" />
+      <entry key="S2" value="1.9317975695175351" />
+      <entry key="S5" value="1.972207081943922" />
+      <entry key="S10" value="1.9860167096281063" />
+      <entry key="S30" value="1.9953196071722157" />
+      <entry key="S60" value="2.0008205224867806" />
+      <entry key="M2" value="2.621804680654535" />
+      <entry key="M5" value="19.996654083266318" />
+      <entry key="M10" value="64.00207011229493" />
+      <entry key="M15" value="102.09689539820215" />
+      <entry key="M30" value="183.3221975179745" />
+      <entry key="H1" value="267.7541066821638" />
+      <entry key="H2" value="335.16306389628875" />
+      <entry key="H4" value="411.45228467228736" />
+      <entry key="D1" value="1019.5979964499355" />
+      <entry key="W1" value="1408.660847579537" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -142,7 +146,7 @@
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
+  <component name="RunManager" selected=".NET Project.FixedIncome.Sandbox">
     <configuration name="FixedIncome.Sandbox" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/bin/Debug/net10.0/FixedIncome.Core.Tests.dll" />
       <option name="PROGRAM_PARAMETERS" value="" />
@@ -198,6 +202,19 @@
           <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
           <option name="timeStamp" value="3" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/src/FixedIncome.Core/Indices/IpcaVna.cs</url>
+          <line>18</line>
+          <properties documentPath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/IpcaVna.cs" containingFunctionPresentation="Method 'Project'">
+            <startOffsets>
+              <option value="613" />
+            </startOffsets>
+            <endOffsets>
+              <option value="614" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>
