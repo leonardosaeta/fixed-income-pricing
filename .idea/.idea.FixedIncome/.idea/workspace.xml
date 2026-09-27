@@ -15,8 +15,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ea5e9e70-5641-43de-9c32-22186835c1a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NtnB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NtnB.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/NtnBAnbimaTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/NtnBAnbimaTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FixedIncome.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/FixedIncome.sln.DotSettings.user" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,13 +33,16 @@
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Instruments/CouponSchedule.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NTNB.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NtnB.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Pricing/NtnBPricingEngine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Pricing/Rounding.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Risk/NtnBRiskEngine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/Anbima/AnbimaSecondaryMarketFile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/Instruments/LtnTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/Instruments.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Dates/B3Calendar.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Instruments/Government/NtnB.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.MarketData/Anbima/AnbimaSecondaryMarketFile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Instruments/NtnBAnbimaTests.cs" root0="SKIP_HIGHLIGHTING" />

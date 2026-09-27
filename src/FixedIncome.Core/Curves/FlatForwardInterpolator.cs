@@ -21,7 +21,7 @@ public class FlatForwardInterpolator:IInterpolator
 
       int lowerIndex = upperIndex - 1;
       double x0 = x[lowerIndex], x1 = x[upperIndex];
-      double y0 = y[lowerIndex], y1 = y[lowerIndex];
+      double y0 = y[lowerIndex], y1 = y[upperIndex];
 
       double weight = (targetX - x0) / (x1 - x0);
       return y0 + weight * (y1 - y0);

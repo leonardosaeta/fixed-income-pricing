@@ -30,15 +30,16 @@ public class DiscountCurve:IYieldCurve
        if (sorted.Count() == 0)
            throw new ArgumentException("pillars must contain at least one item");
        
-       _pillarT = new double[sorted.Count()];
-       _pillarLnDf = new double[sorted.Count()];
-       
+       _pillarT = new double[sorted.Count() + 1];
+       _pillarLnDf = new double[sorted.Count() + 1];
 
        for (int i = 0; i < sorted.Count(); i++)
        {
            double t = _dayCountConvention.YearFraction(referenceDate, sorted[i].date, calendar);
-           _pillarT[i] = t;
-           _pillarLnDf[i] = -t * Math.Log(1+sorted[i].zeroRate);
+           if (t <= 0)
+               throw new ArgumentException("pillars must be after the curve's reference date");
+           _pillarT[i + 1] = t;
+           _pillarLnDf[i + 1] = -t * Math.Log(1+sorted[i].zeroRate);
        }
    }
 
@@ -48,6 +49,12 @@ public class DiscountCurve:IYieldCurve
        double t = _dayCountConvention.YearFraction(ReferenceDate, date, _calendar);
        if(t<= 0)
            return 0;
+       int last = _pillarT.Length - 1;
+       if (t > _pillarT[last])
+       {
+           double forward = (_pillarLnDf[last] - _pillarLnDf[last - 1]) / (_pillarT[last] - _pillarT[last - 1]);
+           return Math.Exp(_pillarLnDf[last] + forward * (t - _pillarT[last]));
+       }
        double lnDf = _interpolator.Interpolate(_pillarT, _pillarLnDf, t);
        return Math.Exp(lnDf);
    }
