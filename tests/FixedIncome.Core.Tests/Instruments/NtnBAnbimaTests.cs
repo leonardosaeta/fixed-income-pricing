@@ -23,7 +23,7 @@ public class NtnBAnbimaTests
         DateOnly referenceDate, DateOnly maturity, decimal realRate, decimal expectedPu)
     {
         var vna = AnbimaTestData.Vna("NTN-B");
-        var pu = new NtnB(maturity).Price(referenceDate, realRate, vna, AnbimaTestData.Calendar);
+        var pu = new NtnB($"NTN-B {maturity:yyyyMMdd}", referenceDate, maturity).Price(referenceDate, realRate, vna, AnbimaTestData.Calendar);
 
         pu.Should().BeApproximately(expectedPu, Tolerance,
             $"NTN-B {maturity:dd/MM/yyyy} at {realRate:P4}, VNA={vna}, ratio={pu / expectedPu:F8}");

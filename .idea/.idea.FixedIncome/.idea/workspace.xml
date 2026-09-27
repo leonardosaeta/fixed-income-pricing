@@ -15,11 +15,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ea5e9e70-5641-43de-9c32-22186835c1a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FixedIncome.sln.DotSettings.user" beforeDir="false" afterPath="$PROJECT_DIR$/FixedIncome.sln.DotSettings.user" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Dates/B3Calendar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Dates/B3Calendar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.MarketData/Anbima/AnbimaSecondaryMarketFile.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.MarketData/Anbima/AnbimaSecondaryMarketFile.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/FixedIncome.Core.Tests.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/FixedIncome.Core.Tests.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NtnB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NtnB.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/NtnBAnbimaTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/NtnBAnbimaTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
