@@ -1,28 +1,25 @@
-using fixed_income_pricing.Curvers.Interface;
-using fixed_income_pricing.Dates.Interface;
 using fixed_income_pricing.Instruments;
 using fixed_income_pricing.Instruments.Government;
+using fixed_income_pricing.Market;
 using fixed_income_pricing.Pricing.Interface;
 
 namespace fixed_income_pricing.Pricing;
 
-public class NtnBPricingEngine:IPricingEngine<NtnB>
+public class NtnBPricingEngine:ICurvePricingEngine<NtnB>
 {
-    private readonly Func<DateOnly, decimal> _projectedVna;
-    private readonly IBusinessDayCalendar _calendar;
+    public string CurveName { get; }
+    public string VnaQuoteName { get; }
 
-    public NtnBPricingEngine(Func<DateOnly, decimal> projectedVna, IBusinessDayCalendar calendar)
+    public NtnBPricingEngine(string realCurveName = CurveNames.IpcaReal, string vnaQuoteName = QuoteNames.NtnBVna)
     {
-        _projectedVna = projectedVna;
-        _calendar = calendar;
+        CurveName = realCurveName;
+        VnaQuoteName = vnaQuoteName;
     }
 
-    public PricingResult Price(NtnB instrument, IYieldCurve realCurve, DateOnly valuationDate)
+    public PricingResult Price(NtnB instrument, MarketContext market)
     {
-        if(realCurve.ReferenceDate != valuationDate)
-            throw new ArgumentException("Curve must match valuation date");
-
-        var dates = CouponSchedule.SemiAnnual(valuationDate, instrument.MaturityDate, _calendar);
+        var realCurve = market.Curve(CurveName);
+        var dates = CouponSchedule.SemiAnnual(market.ValuationDate, instrument.MaturityDate, market.Calendar);
         double cotacao = 0;
         for (var i = 0; i < dates.Count; i++)
         {
@@ -30,7 +27,7 @@ public class NtnBPricingEngine:IPricingEngine<NtnB>
             cotacao += flow * realCurve.DiscountFactor(dates[i]);
         }
 
-        double pv = (double)_projectedVna(valuationDate) * cotacao;
-        return new PricingResult(instrument.Id, valuationDate, pv);
+        double pv = (double)market.Quote(VnaQuoteName) * cotacao;
+        return new PricingResult(instrument.Id, market.ValuationDate, pv);
     }
 }

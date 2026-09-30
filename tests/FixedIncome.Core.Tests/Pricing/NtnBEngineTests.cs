@@ -4,6 +4,7 @@ using fixed_income_pricing.Dates;
 using fixed_income_pricing.Dates.Interface;
 using fixed_income_pricing.dates;
 using fixed_income_pricing.Instruments.Government;
+using fixed_income_pricing.Market;
 using fixed_income_pricing.Pricing;
 using fixed_income_pricing.Risk;
 using FluentAssertions;
@@ -18,17 +19,24 @@ public class NtnBEngineTests
     private const decimal Vna = 4500.123456m;
     private const decimal RealRate = 0.075m;
 
-    private static NtnBPricingEngine Engine() => new(_ => Vna, Calendar);
+    private static readonly NtnBPricingEngine Engine = new();
+
+    private static MarketContext Market(IYieldCurve realCurve, decimal vna = Vna) =>
+        new MarketContext(Settlement, Calendar, new Bus252())
+            .WithCurve(CurveNames.IpcaReal, realCurve)
+            .WithQuote(QuoteNames.NtnBVna, vna);
 
     private static IYieldCurve FlatRealCurve(double rate) => new FlatCurve(Settlement, rate, Calendar);
+
+    private static double ClosedFormBeforeTruncation =>
+        (double)(Vna * Bond.TheoreticalCotacao(Settlement, RealRate, Calendar));
 
     [Fact]
     public void Price_OnFlatRealCurve_MatchesClosedFormPu()
     {
-        var pv = Engine().Price(Bond, FlatRealCurve((double)RealRate), Settlement).presentValue;
+        var pv = Engine.Price(Bond, Market(FlatRealCurve((double)RealRate))).presentValue;
 
-        var expected = Bond.Price(Settlement, RealRate, Vna, Calendar);
-        pv.Should().BeApproximately((double)expected, 1e-5);
+        pv.Should().BeApproximately(ClosedFormBeforeTruncation, 1e-5);
     }
 
     [Fact]
@@ -37,10 +45,9 @@ public class NtnBEngineTests
         var curve = new DiscountCurve(Settlement, Calendar, new Bus252(),
             [(Bond.MaturityDate, (double)RealRate)], new FlatForwardInterpolator());
 
-        var pv = Engine().Price(Bond, curve, Settlement).presentValue;
+        var pv = Engine.Price(Bond, Market(curve)).presentValue;
 
-        var expected = Bond.Price(Settlement, RealRate, Vna, Calendar);
-        pv.Should().BeApproximately((double)expected, 1e-5);
+        pv.Should().BeApproximately(ClosedFormBeforeTruncation, 1e-5);
     }
 
     [Fact]
@@ -48,16 +55,17 @@ public class NtnBEngineTests
     {
         var curve = FlatRealCurve((double)RealRate);
 
-        var pv = Engine().Price(Bond, curve, Settlement).presentValue;
-        var pvDoubleVna = new NtnBPricingEngine(_ => 2 * Vna, Calendar).Price(Bond, curve, Settlement).presentValue;
+        var pv = Engine.Price(Bond, Market(curve)).presentValue;
+        var pvDoubleVna = Engine.Price(Bond, Market(curve, 2 * Vna)).presentValue;
 
         pvDoubleVna.Should().BeApproximately(2 * pv, 1e-8);
     }
 
     [Fact]
-    public void Price_RejectsCurveFromAnotherDate()
+    public void Market_RejectsCurveFromAnotherDate()
     {
-        var act = () => Engine().Price(Bond, FlatRealCurve(0.07), Settlement.AddDays(1));
+        var act = () => new MarketContext(Settlement.AddDays(1), Calendar, new Bus252())
+            .WithCurve(CurveNames.IpcaReal, FlatRealCurve(0.07));
 
         act.Should().Throw<ArgumentException>();
     }
@@ -65,11 +73,10 @@ public class NtnBEngineTests
     [Fact]
     public void Risk_DurationAndDv01AreConsistent()
     {
-        var engine = Engine();
-        var curve = FlatRealCurve((double)RealRate);
-        var pv = engine.Price(Bond, curve, Settlement).presentValue;
+        var market = Market(FlatRealCurve((double)RealRate));
+        var pv = Engine.Price(Bond, market).presentValue;
 
-        var risk = new NtnBRiskEngine(engine, new Bus252(), Calendar).Compute(Bond, curve, Settlement);
+        var risk = new NtnBRiskEngine(Engine).Compute(Bond, market);
 
         risk.ModifiedDuration.Should().BeInRange(0, 8.7);
         risk.Convexity.Should().BePositive();

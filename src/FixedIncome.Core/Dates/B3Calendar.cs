@@ -12,6 +12,10 @@ public class B3Calendar : IBusinessDayCalendar
     private readonly int _minyear;
     private readonly int _maxyear;
 
+    private readonly DateOnly _origin;
+    private readonly bool[] _isBusinessDay;
+    private readonly int[] _businessDaysBefore;
+
     public B3Calendar(int minyear, int maxyear)
     {
         if (minyear > maxyear) throw new ArgumentException("Max year must be greater than Min year");
@@ -19,6 +23,17 @@ public class B3Calendar : IBusinessDayCalendar
         _minyear = minyear;
         _maxyear = maxyear;
         _holidays = BuildHolidaySet(minyear, maxyear);
+
+        _origin = new DateOnly(minyear, 1, 1);
+        int days = new DateOnly(maxyear + 1, 1, 1).DayNumber - _origin.DayNumber;
+        _isBusinessDay = new bool[days];
+        _businessDaysBefore = new int[days + 1];
+        for (int i = 0; i < days; i++)
+        {
+            DateOnly date = _origin.AddDays(i);
+            _isBusinessDay[i] = date.DayOfWeek is not (DayOfWeek.Saturday or DayOfWeek.Sunday) && !_holidays.Contains(date);
+            _businessDaysBefore[i + 1] = _businessDaysBefore[i] + (_isBusinessDay[i] ? 1 : 0);
+        }
     }
 
     private static HashSet<DateOnly> BuildHolidaySet(int minyear, int maxyear)
@@ -85,10 +100,7 @@ public class B3Calendar : IBusinessDayCalendar
     public bool IsBusinessDays(DateOnly date)
     {
         EnsureYearInRange(date);
-        if (date.DayOfWeek == DayOfWeek.Saturday || date.DayOfWeek == DayOfWeek.Sunday)
-            return false;
-
-        return !_holidays.Contains(date);
+        return _isBusinessDay[date.DayNumber - _origin.DayNumber];
     }
 
     public DateOnly AddBusinessDay(DateOnly date, int n)
@@ -108,21 +120,16 @@ public class B3Calendar : IBusinessDayCalendar
 
     public int CountBusinessDaysBetween(DateOnly startDate, DateOnly endDate)
     {
-        if (startDate > endDate) return -CountBusinessDaysBetween(endDate, startDate);
+        return BusinessDaysBefore(endDate) - BusinessDaysBefore(startDate);
+    }
 
-        int count = 0;
-        DateOnly current = startDate;
-        DateOnly end = endDate;
-
-        while (current < end)
-        {
-            current = current.AddDays(1);
-            if (IsBusinessDays(current))
-            {
-                count++;
-            }
-        }
-        return count;
+    private int BusinessDaysBefore(DateOnly date)
+    {
+        int index = date.DayNumber - _origin.DayNumber;
+        if (index < 0 || index >= _businessDaysBefore.Length)
+            throw new ArgumentOutOfRangeException(nameof(date), $"Calendar was for {_minyear} - {_maxyear}. got {date}. " +
+                "Construct B3Calendar with a wider year range.");
+        return _businessDaysBefore[index];
     }
 
     private void EnsureYearInRange(DateOnly date)

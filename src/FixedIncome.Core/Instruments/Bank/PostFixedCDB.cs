@@ -1,4 +1,3 @@
-using fixed_income_pricing.CashFlows;
 using fixed_income_pricing.Indices;
 
 namespace fixed_income_pricing.Instruments.Bank;
@@ -8,22 +7,19 @@ public class PostFixedCDB:IInstrument
     public string Id { get; }
     public DateOnly IssueDate { get; }
     public DateOnly MaturityDate { get; }
-
-    private readonly double _notional;
-    private readonly double _percentualCdi;
-    private readonly IIndex _cdiIndex;
+    public double Notional { get; }
+    public double PercentualCdi { get; }
 
     public PostFixedCDB(
         string id,
         DateOnly issueDate,
         DateOnly maturityDate,
         double notional,
-        double percentualCdi,
-        IIndex cdiIndex)
+        double percentualCdi)
     {
         if (maturityDate <= issueDate)
             throw new ArgumentException("maturityDate must be greater than issueDate");
-        if (notional < 0 )
+        if (notional <= 0)
             throw new ArgumentException("notional must be greater than zero");
         if (percentualCdi <= 0)
             throw new ArgumentException("percentualCdi must be greater than zero");
@@ -31,38 +27,19 @@ public class PostFixedCDB:IInstrument
         Id = id;
         IssueDate = issueDate;
         MaturityDate = maturityDate;
-        _notional = notional;
-        _percentualCdi = percentualCdi;
-        _cdiIndex = cdiIndex;
+        Notional = notional;
+        PercentualCdi = percentualCdi;
     }
 
-    public IEnumerable<Cashflow> GenerateCashflows(DateOnly valuationDate)
-    {
-        if (valuationDate >= MaturityDate)
-        {
-            yield break;
-        }
+    // Beyond the last published fixing the index projects flat at that fixing.
+    public double RedemptionValue(IDailyRateIndex cdiIndex) => AccruedValue(MaturityDate, cdiIndex);
 
-        yield return new Cashflow(MaturityDate, RedemptionValue());
-    }
-
-    public double RedemptionValue()
-    {
-        double cdiFactor = _cdiIndex.AccrualFactor(IssueDate, MaturityDate);
-        double acrrualFactor = 1 + (cdiFactor - 1) * _percentualCdi;
-        return _notional * acrrualFactor;
-    }
-    
-    public double AccruedValue(DateOnly asOfDate)
+    public double AccruedValue(DateOnly asOfDate, IDailyRateIndex cdiIndex)
     {
         if (asOfDate < IssueDate)
             throw new ArgumentException("asOfDate cannot be before IssueDate");
 
         DateOnly cutoff = asOfDate > MaturityDate ? MaturityDate : asOfDate;
-        double cdiFactor = _cdiIndex.AccrualFactor(IssueDate, cutoff);
-        double accrualFactor = 1 + (cdiFactor - 1) * _percentualCdi;
-        return _notional * accrualFactor;
+        return Notional * DailyRateAccrual.Factor(cdiIndex, IssueDate, cutoff, PercentualCdi);
     }
-    
-    public PostFixedCDB WithIndex(IIndex newIndex) => new PostFixedCDB(Id, IssueDate, MaturityDate, _notional, _percentualCdi, newIndex);
 }

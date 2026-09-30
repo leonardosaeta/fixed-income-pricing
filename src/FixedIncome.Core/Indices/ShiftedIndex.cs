@@ -10,7 +10,7 @@ public class ShiftedIndex:IIndex
     private readonly IBusinessDayCalendar _calendar;
 
 
-    public string Name => $"{_baseIndex}(Shifted)";
+    public string Name => $"{_baseIndex.Name}(Shifted)";
 
     public ShiftedIndex(IIndex baseIndex, double shift, IDayCountConvention dayCount, IBusinessDayCalendar calendar)
     {

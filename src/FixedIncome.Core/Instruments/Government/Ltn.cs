@@ -4,7 +4,7 @@ using fixed_income_pricing.CashFlows;
 
 namespace fixed_income_pricing.Instruments.Government;
 
-public class Ltn:IInstrument
+public class Ltn:ICashflowInstrument
 {
     public string Id {get;}
     public DateOnly IssueDate {get;}

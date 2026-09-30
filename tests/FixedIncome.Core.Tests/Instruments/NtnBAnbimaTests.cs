@@ -5,7 +5,7 @@ namespace FixedIncome.Core.Tests.Instruments;
 
 public class NtnBAnbimaTests
 {
-    private const decimal Tolerance = 0.01m;
+    private const decimal Tolerance = 0.000001m;
 
     public static TheoryData<DateOnly, DateOnly, decimal, decimal> NtnBQuotes()
     {

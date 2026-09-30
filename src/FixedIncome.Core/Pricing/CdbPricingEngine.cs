@@ -1,16 +1,22 @@
-using fixed_income_pricing.Curvers.Interface;
+using fixed_income_pricing.Indices;
 using fixed_income_pricing.Instruments.Bank;
+using fixed_income_pricing.Market;
 using fixed_income_pricing.Pricing.Interface;
 
 namespace fixed_income_pricing.Pricing;
 
 public class CdbPricingEngine:IPricingEngine<PostFixedCDB>
 {
-    public PricingResult Price(PostFixedCDB instruement, IYieldCurve curve, DateOnly valuationDate)
+    public string IndexName { get; }
+
+    public CdbPricingEngine(string indexName = IndexNames.Cdi)
     {
-        if(curve.ReferenceDate != valuationDate)
-            throw new ArgumentException("Curve must match valuation date");
-        double value = instruement.AccruedValue(valuationDate);
-        return new PricingResult(instruement.Id, valuationDate, value);
+        IndexName = indexName;
+    }
+
+    public PricingResult Price(PostFixedCDB instruement, MarketContext market)
+    {
+        double value = instruement.AccruedValue(market.ValuationDate, market.Index<IDailyRateIndex>(IndexName));
+        return new PricingResult(instruement.Id, market.ValuationDate, value);
     }
 }
