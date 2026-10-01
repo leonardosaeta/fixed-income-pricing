@@ -34,19 +34,8 @@ public interface ICurveBootstrapper
         }
 
 
-        public IYieldCurve Bootstrap(DateOnly referenceDate, IEnumerable<LtnQuote> quotes)
-        {
-            var pillars = new List<(DateOnly date, double zeroRate)>();
-            foreach (var quote in quotes)
-            {
-                double t = _dayCountConvention.YearFraction(referenceDate, quote.Instrument.MaturityDate, _calendar);
-                if (t <= 0)
-                    throw new ArgumentException(
-                        $"Quote maturity {quote.Instrument.MaturityDate:yyyy-MM-dd} is not after the reference date");
-                double impliedYield = Math.Pow(quote.Instrument.FaceValue / quote.MarketPrice, 1.0 / t) - 1.0;
-                pillars.Add((quote.Instrument.MaturityDate, impliedYield));
-            }
-            return new DiscountCurve(referenceDate, _calendar, _dayCountConvention,  pillars, _interpolator);
-        }
+        public IYieldCurve Bootstrap(DateOnly referenceDate, IEnumerable<LtnQuote> quotes) =>
+            new IterativeCurveBootstrapper(_calendar, _dayCountConvention, _interpolator)
+                .Bootstrap(referenceDate, quotes.Select(q => new BootstrapQuote(q.Instrument, q.MarketPrice)));
     }
 }

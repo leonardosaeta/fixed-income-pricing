@@ -14,38 +14,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea5e9e70-5641-43de-9c32-22186835c1a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/DailyRateAccrual.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/Interface/IDailyRateIndex.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/ShiftedDailyRateIndex.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Interface/ICashflowInstrument.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Market/MarketContext.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Market/MarketNames.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/ParallelCurveRiskEngine.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Curves/LtnBootstrapAnbimaTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Dates/BusinessDayCountTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Indices/DailyCompoundingIndexTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Indices/IpcaVnaTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/PostFixedCdbTests.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Market/MarketContextTests.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Dates/B3Calendar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Dates/B3Calendar.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/DailyCompoundingIndex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/DailyCompoundingIndex.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/IpcaVna.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/IpcaVna.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/ShiftedIndex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/ShiftedIndex.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Bank/PostFixedCDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Bank/PostFixedCDB.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/Ltn.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/Ltn.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NtnB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Government/NtnB.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Interface/IInstrument.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Interface/IInstrument.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/CdbPricingEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/CdbPricingEngine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/GovernmentBondPricingEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/GovernmentBondPricingEngine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/Interface/IPricingEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/Interface/IPricingEngine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/NtnBPricingEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/NtnBPricingEngine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/CdbRiskEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/CdbRiskEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/Interface/ICurveBootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/Interface/ICurveBootstrapper.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/GovernmentBondRiskEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/GovernmentBondRiskEngine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/Interface/IRiskEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/Interface/IRiskEngine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/NtnBRiskEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/NtnBRiskEngine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/NtnBAnbimaTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/NtnBAnbimaTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Pricing/NtnBEngineTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Pricing/NtnBEngineTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/ParallelCurveRiskEngine.cs" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -240,6 +213,8 @@
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+    <MESSAGE value="fix: align conventions with ANBIMA/B3 and add MarketContext" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix: align conventions with ANBIMA/B3 and add MarketContext" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

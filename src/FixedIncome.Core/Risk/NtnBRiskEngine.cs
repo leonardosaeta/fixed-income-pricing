@@ -3,7 +3,7 @@ using fixed_income_pricing.Pricing;
 
 namespace fixed_income_pricing.Risk;
 
-public class NtnBRiskEngine : ParallelCurveRiskEngine<NtnB>
+public class NtnBRiskEngine : CurveRiskEngine<NtnB>
 {
     public NtnBRiskEngine(NtnBPricingEngine pricingEngine) : base(pricingEngine)
     {
