@@ -15,10 +15,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ea5e9e70-5641-43de-9c32-22186835c1a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/Interface/ICurveBootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/Interface/ICurveBootstrapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/GovernmentBondRiskEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/GovernmentBondRiskEngine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/NtnBRiskEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/NtnBRiskEngine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/ParallelCurveRiskEngine.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +170,7 @@
     &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected=".NET Project.FixedIncome.Sandbox">
+  <component name="RunManager">
     <configuration name="FixedIncome.Sandbox" type="DotNetProject" factoryName=".NET Project">
       <option name="EXE_PATH" value="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/bin/Debug/net10.0/FixedIncome.Core.Tests.dll" />
       <option name="PROGRAM_PARAMETERS" value="" />
