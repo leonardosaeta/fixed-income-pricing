@@ -131,3 +131,8 @@ dotnet test tests/FixedIncome.Core.Tests
 The market-validation tests fetch the latest ANBIMA secondary-market and VNA
 files (or reuse the cached ones) and reprice every LTN, NTN-F and NTN-B in
 them.
+
+## License
+
+[MIT](LICENSE). Market data downloaded at runtime belongs to its publishers
+(ANBIMA, B3, Banco Central do Brasil) and is subject to their terms of use.
