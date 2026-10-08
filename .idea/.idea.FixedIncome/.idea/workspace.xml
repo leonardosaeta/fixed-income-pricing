@@ -15,7 +15,6 @@
   <component name="ChangeListManager">
     <list default="true" id="ea5e9e70-5641-43de-9c32-22186835c1a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,35 +36,11 @@
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Pricing/Rounding.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Core/Risk/NtnBRiskEngine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/Anbima/AnbimaSecondaryMarketFile.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/B3/B3Client.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/Instruments/LtnTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/Instruments.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Curves/DiscountCurve.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Curves/FlatForwardInterpolator.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Dates/B3Calendar.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Dates/Interface/IBusinessDayCalendar.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Indices/DailyCompoundingIndex.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Indices/IpcaVna.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Indices/ShiftedIndex.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Instruments/Bank/PostFixedCDB.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Instruments/Government/Ltn.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Instruments/Government/NtnB.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Instruments/Interface/IInstrument.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Pricing/CdbPricingEngine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Pricing/GovernmentBondPricingEngine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Pricing/Interface/IPricingEngine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Pricing/NtnBPricingEngine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Risk/CdbRiskEngine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Risk/GovernmentBondRiskEngine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Risk/Interface/IRiskEngine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Risk/NtnBRiskEngine.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.MarketData/Anbima/AnbimaSecondaryMarketFile.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Dates/Bus252Tests.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Instruments/NtnBAnbimaTests.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Pricing/NtnBEngineTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Immediate Window" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Sandbox/Program.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -74,61 +49,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.291183396617114" />
-      <entry key="MS500" value="1.7813278801723174" />
-      <entry key="S2" value="1.940174202509126" />
-      <entry key="S5" value="1.9756259249753851" />
-      <entry key="S10" value="1.9877377814862531" />
-      <entry key="S30" value="1.9958958768908859" />
-      <entry key="S60" value="2.0004522314390973" />
-      <entry key="M2" value="2.5220228412386536" />
-      <entry key="M5" value="17.77128496367482" />
-      <entry key="M10" value="57.245521183892215" />
-      <entry key="M15" value="91.58089547132374" />
-      <entry key="M30" value="164.14521972673057" />
-      <entry key="H1" value="238.52423517544284" />
-      <entry key="H2" value="297.3899167158973" />
-      <entry key="H4" value="364.3263516820581" />
-      <entry key="D1" value="901.8645399689375" />
-      <entry key="W1" value="1245.6235578953103" />
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0000000000303317" />
+      <entry key="S2" value="1.0043978956896364" />
+      <entry key="S5" value="1.2171020192334794" />
+      <entry key="S10" value="1.837591018167544" />
+      <entry key="S30" value="3.4470109703734173" />
+      <entry key="S60" value="4.438903726333915" />
+      <entry key="M2" value="5.703232178970794" />
+      <entry key="M5" value="12.60840687162826" />
+      <entry key="M10" value="23.191392463023774" />
+      <entry key="M15" value="30.058080692221022" />
+      <entry key="M30" value="43.6810196437664" />
+      <entry key="H1" value="64.14175043571117" />
+      <entry key="H2" value="87.79354081042761" />
+      <entry key="H4" value="106.94119994136962" />
+      <entry key="D1" value="129.3031066836451" />
+      <entry key="W1" value="512.4123945020061" />
     </decayedCancelled>
     <decayedSelected>
-      <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="0.0" />
-      <entry key="S2" value="5.973944089267797E-121" />
-      <entry key="S5" value="9.574803777589707E-49" />
-      <entry key="S10" value="1.6013546930964926E-24" />
-      <entry key="S30" value="4.0228012131570725E-8" />
-      <entry key="S60" value="6.900786724010506E-4" />
-      <entry key="M2" value="0.10268746239952017" />
-      <entry key="M5" value="2.2524823237699905" />
-      <entry key="M10" value="6.801042612239637" />
-      <entry key="M15" value="10.564544749534507" />
-      <entry key="M30" value="19.223902745945423" />
-      <entry key="H1" value="29.26628053099476" />
-      <entry key="H2" value="37.796741482728315" />
-      <entry key="H4" value="47.14091569796721" />
-      <entry key="D1" value="117.74036586744262" />
-      <entry key="W1" value="163.03868633494798" />
+      <entry key="MS100" value="5.216572824341332E-235" />
+      <entry key="MS500" value="1.3914802768220282E-47" />
+      <entry key="S2" value="1.931386821443061E-12" />
+      <entry key="S5" value="2.06228035844846E-5" />
+      <entry key="S10" value="0.004541233707320057" />
+      <entry key="S30" value="0.1656240842746251" />
+      <entry key="S60" value="0.41796915291968073" />
+      <entry key="M2" value="0.9525152268821118" />
+      <entry key="M5" value="3.8626466549625382" />
+      <entry key="M10" value="7.842788921696771" />
+      <entry key="M15" value="10.267999384502307" />
+      <entry key="M30" value="14.574182427620915" />
+      <entry key="H1" value="19.977054346209144" />
+      <entry key="H2" value="25.626045330642906" />
+      <entry key="H4" value="29.996811683270245" />
+      <entry key="D1" value="34.886223508274036" />
+      <entry key="W1" value="85.0265225118078" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="1.186280196238215" />
-      <entry key="MS500" value="1.7508751220266918" />
-      <entry key="S2" value="1.9317975695175351" />
-      <entry key="S5" value="1.972207081943922" />
-      <entry key="S10" value="1.9860167096281063" />
-      <entry key="S30" value="1.9953196071722157" />
-      <entry key="S60" value="2.0008205224867806" />
-      <entry key="M2" value="2.621804680654535" />
-      <entry key="M5" value="19.996654083266318" />
-      <entry key="M10" value="64.00207011229493" />
-      <entry key="M15" value="102.09689539820215" />
-      <entry key="M30" value="183.3221975179745" />
-      <entry key="H1" value="267.7541066821638" />
-      <entry key="H2" value="335.16306389628875" />
-      <entry key="H4" value="411.45228467228736" />
-      <entry key="D1" value="1019.5979964499355" />
-      <entry key="W1" value="1408.660847579537" />
+      <entry key="MS100" value="0.013139006488339287" />
+      <entry key="MS500" value="0.4204482076318121" />
+      <entry key="S2" value="0.8082543287867933" />
+      <entry key="S5" value="1.104805669899553" />
+      <entry key="S10" value="1.7405426318796018" />
+      <entry key="S30" value="3.5317238729897347" />
+      <entry key="S60" value="4.798812996161846" />
+      <entry key="M2" value="6.607504625074816" />
+      <entry key="M5" value="16.39925578460505" />
+      <entry key="M10" value="30.961693029420257" />
+      <entry key="M15" value="40.263163271518415" />
+      <entry key="M30" value="58.2113374634228" />
+      <entry key="H1" value="84.08935009758225" />
+      <entry key="H2" value="113.40091360052891" />
+      <entry key="H4" value="136.927136259151" />
+      <entry key="D1" value="164.1872269780914" />
+      <entry key="W1" value="597.4381846496716" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -143,38 +118,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Project.FixedIncome.Sandbox.executor&quot;: &quot;Debug&quot;,
-    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
-    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/leonardo/Documents/GitHub/fixed-income-pricing/FixedIncome.slnx&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Project.FixedIncome.Sandbox.executor": "Debug",
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "git-widget-placeholder": "main",
+    "junie.onboarding.icon.badge.shown": "true",
+    "last_opened_file_path": "/Users/leonardo/Documents/GitHub/fixed-income-pricing/FixedIncome.slnx",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "to.speed.mode.migration.done": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager">
     <configuration name="FixedIncome.Sandbox" type="DotNetProject" factoryName=".NET Project">
-      <option name="EXE_PATH" value="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/bin/Debug/net10.0/FixedIncome.Core.Tests.dll" />
+      <option name="EXE_PATH" value="$PROJECT_DIR$/src/FixedIncome.Sandbox/bin/Debug/net10.0/FixedIncome.Sandbox" />
       <option name="PROGRAM_PARAMETERS" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/bin/Debug/net10.0" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src/FixedIncome.Sandbox/bin/Debug/net10.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
       <option name="ENV_FILE_PATHS" value="" />
       <option name="REDIRECT_INPUT_PATH" value="" />
@@ -182,7 +157,7 @@
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="AUTO_ATTACH_CHILDREN" value="0" />
-      <option name="PROJECT_PATH" value="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/FixedIncome.Core.Tests.csproj" />
+      <option name="PROJECT_PATH" value="$PROJECT_DIR$/src/FixedIncome.Sandbox/FixedIncome.Sandbox.csproj" />
       <option name="PROJECT_EXE_PATH_TRACKING" value="1" />
       <option name="PROJECT_ARGUMENTS_TRACKING" value="1" />
       <option name="PROJECT_WORKING_DIRECTORY_TRACKING" value="1" />
