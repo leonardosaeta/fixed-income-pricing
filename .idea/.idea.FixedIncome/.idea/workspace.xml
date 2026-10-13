@@ -15,20 +15,8 @@
   <component name="ChangeListManager">
     <list default="true" id="ea5e9e70-5641-43de-9c32-22186835c1a0" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/BucketShiftedCurve.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/BucketShiftedCurve.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/DiscountCurve.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/DiscountCurve.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/IterativeCurveBootstrapper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/IterativeCurveBootstrapper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/ParallelShiftedCurve.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Curves/ParallelShiftedCurve.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/DailyRateAccrual.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/DailyRateAccrual.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/ProjectedDailyRateIndex.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Indices/ProjectedDailyRateIndex.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Bank/PostFixedCDB.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Bank/PostFixedCDB.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Market/MarketNames.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Market/MarketNames.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/CdbPricingEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/CdbPricingEngine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/CdbRiskEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/CdbRiskEngine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Curves/DiscountCurveTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Curves/DiscountCurveTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Indices/DailyCompoundingIndexTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Indices/DailyCompoundingIndexTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Indices/ProjectedDailyRateIndexTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Indices/ProjectedDailyRateIndexTests.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/PostFixedCdbTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/PostFixedCdbTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +40,7 @@
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/Anbima/AnbimaSecondaryMarketFile.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/Instruments/LtnTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/FixedIncome.Sandbox/Valuation/Trade.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Curves/BucketShiftedCurve.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Curves/DiscountCurve.cs" root0="SKIP_HIGHLIGHTING" />

@@ -42,7 +42,7 @@ src/
     Portfolio/   Position, Portfolio, PortfolioRiskReport
     MarketData/  BcbApiSource (BCB SGS API), CsvRateDataSource (local cache)
   FixedIncome.MarketData   ANBIMA download client and file parsers
-  FixedIncome.Sandbox      console entry point
+  FixedIncome.Sandbox      end-to-end pricing cycle on one date (see below)
 tests/
   FixedIncome.Core.Tests   xUnit + FluentAssertions, 90 tests
 ```
@@ -131,6 +131,18 @@ dotnet test tests/FixedIncome.Core.Tests
 The market-validation tests fetch the latest ANBIMA secondary-market and VNA
 files (or reuse the cached ones) and reprice every LTN, NTN-F and NTN-B in
 them.
+
+### Pricing-cycle sandbox
+
+```
+dotnet run --project src/FixedIncome.Sandbox -- [yyyy-MM-dd]
+```
+
+One file (`src/FixedIncome.Sandbox/Program.cs`) runs the daily cycle for a
+sample book: downloads ANBIMA and BCB CDI data, bootstraps the pré and real
+curves, then prints valuation and risk, key-rate DV01s, parallel-shift
+scenarios and the P&L against the previous business day. Downloaded files are
+cached next to the executable.
 
 ## License
 
