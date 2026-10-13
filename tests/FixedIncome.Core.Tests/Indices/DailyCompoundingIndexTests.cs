@@ -81,4 +81,28 @@ public class DailyCompoundingIndexTests
 
         (1 + shifted.DailyRate(day)).Should().BeApproximately(Daily(0.1365) * Daily(0.01), 1e-15);
     }
+
+    [Fact]
+    public void B3DailyFactor_RoundsTheDailyRateTo8Decimals()
+    {
+        DailyRateAccrual.B3DailyFactor(0.1365).Should().Be(1.00050788m);
+        DailyRateAccrual.B3DailyFactor(0.15).Should().Be(1.00055476m);
+    }
+
+    [Fact]
+    public void B3Factor_FollowsTheCetipRoundingRules()
+    {
+        DailyRateAccrual.B3Factor(Cdi, new DateOnly(2026, 9, 14), new DateOnly(2026, 9, 21), 1.02m)
+            .Should().Be(1.00264079m);
+    }
+
+    [Fact]
+    public void B3Factor_StaysWithinRoundingOfTheExactFactor()
+    {
+        var start = new DateOnly(2026, 9, 1);
+        var end = new DateOnly(2026, 9, 30);
+
+        ((double)DailyRateAccrual.B3Factor(Cdi, start, end, 1.02m))
+            .Should().BeApproximately(DailyRateAccrual.Factor(Cdi, start, end, 1.02), 1e-7);
+    }
 }

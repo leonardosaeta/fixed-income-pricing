@@ -4,12 +4,9 @@ using fixed_income_pricing.Instruments;
 
 namespace fixed_income_pricing.Curvers;
 
-// Price in the same unit as the instrument's cash flows (R$ for LTN/NTN-F, fraction of VNA for NTN-B).
 public sealed record BootstrapQuote(ICashflowInstrument Instrument, double Price);
 
-// Sequential bootstrap: one pillar per instrument, at its maturity, ordered by maturity. Each pillar's zero rate
-// is solved so the instrument reprices exactly on the curve built so far plus that pillar. Flows between the
-// previous pillar and the new one depend on it through the interpolator, so the solve is numerical.
+public sealed record RateQuote(ICashflowInstrument Instrument, double Rate);
 public class IterativeCurveBootstrapper
 {
     private const double Tolerance = 1e-12;
@@ -55,11 +52,16 @@ public class IterativeCurveBootstrapper
         return Curve(referenceDate, pillars);
     }
 
+    public DiscountCurve Bootstrap(DateOnly referenceDate, IEnumerable<RateQuote> quotes) =>
+        Bootstrap(referenceDate, quotes.Select(q => new BootstrapQuote(q.Instrument, PriceFromRate(referenceDate, q))));
+
+    public double PriceFromRate(DateOnly referenceDate, RateQuote quote) =>
+        quote.Instrument.GenerateCashflows(referenceDate)
+            .Sum(cf => cf.Amount * Math.Pow(1 + quote.Rate, -_dayCount.YearFraction(referenceDate, cf.PaymentDate, _calendar)));
+
     private DiscountCurve Curve(DateOnly referenceDate, IEnumerable<(DateOnly date, double zeroRate)> pillars) =>
         new(referenceDate, _calendar, _dayCount, pillars, _interpolator);
 
-    // Safeguarded Newton: PV falls as the pillar rate rises, so [lo, hi] brackets the root;
-    // steps that leave the bracket fall back to bisection.
     private static double Solve(Func<double, double> error, double guess, double scale)
     {
         double lo = -0.9, hi = 10.0;

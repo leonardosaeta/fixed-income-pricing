@@ -42,7 +42,17 @@ public class PostFixedCdbTests
         int du = Calendar.CountBusinessDaysBetween(Issue, Valuation);
         double daily = Math.Pow(1 + Rate, 1.0 / 252.0) - 1;
 
-        Cdb.AccruedValue(Valuation, Cdi).Should().BeApproximately(Notional * Math.Pow(1 + 1.02 * daily, du), 1e-6);
+        Cdb.AccruedValue(Valuation, Cdi, AccrualRounding.None)
+            .Should().BeApproximately(Notional * Math.Pow(1 + 1.02 * daily, du), 1e-6);
+    }
+
+    [Fact]
+    public void AccruedValue_UsesTheB3RoundedFactorByDefault()
+    {
+        double b3 = (double)DailyRateAccrual.B3Factor(Cdi, Issue, Valuation, 1.02m);
+
+        Cdb.AccruedValue(Valuation, Cdi).Should().Be(Notional * b3);
+        Cdb.AccruedValue(Valuation, Cdi).Should().BeApproximately(Cdb.AccruedValue(Valuation, Cdi, AccrualRounding.None), 5.0);
     }
 
     [Fact]

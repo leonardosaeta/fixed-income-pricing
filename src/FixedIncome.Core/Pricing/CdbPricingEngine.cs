@@ -8,15 +8,17 @@ namespace fixed_income_pricing.Pricing;
 public class CdbPricingEngine:IPricingEngine<PostFixedCDB>
 {
     public string IndexName { get; }
+    public AccrualRounding Rounding { get; }
 
-    public CdbPricingEngine(string indexName = IndexNames.Cdi)
+    public CdbPricingEngine(string indexName = IndexNames.Cdi, AccrualRounding rounding = AccrualRounding.B3)
     {
         IndexName = indexName;
+        Rounding = rounding;
     }
 
     public PricingResult Price(PostFixedCDB instruement, MarketContext market)
     {
-        double value = instruement.AccruedValue(market.ValuationDate, market.Index<IDailyRateIndex>(IndexName));
+        double value = instruement.AccruedValue(market.ValuationDate, market.Index<IDailyRateIndex>(IndexName), Rounding);
         return new PricingResult(instruement.Id, market.ValuationDate, value);
     }
 }

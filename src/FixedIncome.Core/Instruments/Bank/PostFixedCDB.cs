@@ -31,15 +31,15 @@ public class PostFixedCDB:IInstrument
         PercentualCdi = percentualCdi;
     }
 
-    // Beyond the last published fixing the index projects flat at that fixing.
-    public double RedemptionValue(IDailyRateIndex cdiIndex) => AccruedValue(MaturityDate, cdiIndex);
+    public double RedemptionValue(IDailyRateIndex cdiIndex, AccrualRounding rounding = AccrualRounding.B3) =>
+        AccruedValue(MaturityDate, cdiIndex, rounding);
 
-    public double AccruedValue(DateOnly asOfDate, IDailyRateIndex cdiIndex)
+    public double AccruedValue(DateOnly asOfDate, IDailyRateIndex cdiIndex, AccrualRounding rounding = AccrualRounding.B3)
     {
         if (asOfDate < IssueDate)
             throw new ArgumentException("asOfDate cannot be before IssueDate");
 
         DateOnly cutoff = asOfDate > MaturityDate ? MaturityDate : asOfDate;
-        return Notional * DailyRateAccrual.Factor(cdiIndex, IssueDate, cutoff, PercentualCdi);
+        return Notional * DailyRateAccrual.Factor(cdiIndex, IssueDate, cutoff, PercentualCdi, rounding);
     }
 }

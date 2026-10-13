@@ -63,10 +63,10 @@ public class ProjectedDailyRateIndexTests
         var maturity = new DateOnly(2029, 1, 2);
         var cdb = new PostFixedCDB("CDB 100%", issue, maturity, 1_000_000, 1.0);
 
-        double expectedRedemption = cdb.RedemptionValue(Projected);
+        double expectedRedemption = cdb.RedemptionValue(Projected, AccrualRounding.None);
         double pv = expectedRedemption * PreCurve.DiscountFactor(maturity);
 
-        pv.Should().BeApproximately(cdb.AccruedValue(Reference, Fixings), 1e-6);
+        pv.Should().BeApproximately(cdb.AccruedValue(Reference, Fixings, AccrualRounding.None), 1e-6);
     }
 
     [Fact]

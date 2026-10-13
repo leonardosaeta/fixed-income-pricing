@@ -1,6 +1,7 @@
 using fixed_income_pricing.Curvers;
 using fixed_income_pricing.Dates;
 using fixed_income_pricing.dates;
+using fixed_income_pricing.Risk;
 using FluentAssertions;
 
 namespace FixedIncome.Core.Tests.Curves;
@@ -54,5 +55,32 @@ public class DiscountCurveTests
         var fiveYears = new DateOnly(2031, 9, 25);
 
         curve.DiscountFactor(fiveYears).Should().BeLessThan(curve.DiscountFactor(ThreeYears));
+    }
+
+    [Fact]
+    public void DiscountFactor_IsOne_OnTheReferenceDate()
+    {
+        var curve = Curve((OneYear, 0.10));
+
+        curve.DiscountFactor(Reference).Should().Be(1.0);
+    }
+
+    [Fact]
+    public void DiscountFactor_Throws_BeforeTheReferenceDate()
+    {
+        var curve = Curve((OneYear, 0.10));
+
+        var act = () => curve.DiscountFactor(new DateOnly(2026, 9, 24));
+
+        act.Should().Throw<ArgumentException>();
+    }
+
+    [Fact]
+    public void ShiftedCurves_KeepADiscountFactorOfOne_OnTheReferenceDate()
+    {
+        var curve = Curve((OneYear, 0.10), (ThreeYears, 0.12));
+
+        new ParallelShiftedCurve(curve, 0.01, DayCount, Calendar).DiscountFactor(Reference).Should().Be(1.0);
+        new BucketShiftedCurve(curve, KeyRateTenors.Default, 0, 0.01, DayCount, Calendar).DiscountFactor(Reference).Should().Be(1.0);
     }
 }

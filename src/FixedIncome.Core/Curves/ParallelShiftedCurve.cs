@@ -1,4 +1,3 @@
-using System.Runtime.InteropServices.JavaScript;
 using fixed_income_pricing.Curvers.Interface;
 using fixed_income_pricing.Dates.Interface;
 using fixed_income_pricing.Indices;
@@ -28,9 +27,7 @@ public class ParallelShiftedCurve: IYieldCurve
     public double DiscountFactor(DateOnly date)
     {
         double t = _dayCount.YearFraction(ReferenceDate, date, _calendar);
-        {
-            if (t <= 0) return 0;
-            return Math.Pow(1 + ZeroRate(date), -t);
-        }
+        if (t <= 0) return _baseCurve.DiscountFactor(date);
+        return Math.Pow(1 + ZeroRate(date), -t);
     }
 }

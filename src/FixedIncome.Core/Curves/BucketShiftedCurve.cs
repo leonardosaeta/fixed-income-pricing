@@ -50,7 +50,7 @@ public class BucketShiftedCurve : IYieldCurve
     public double DiscountFactor(DateOnly date)
     {
         double t = _dayCount.YearFraction(ReferenceDate, date, _calendar);
-        if (t <= 0) return 0;
+        if (t <= 0) return _baseCurve.DiscountFactor(date);
         return Math.Pow(1 + ZeroRate(date), -t);
     }
 }

@@ -3,6 +3,7 @@ namespace fixed_income_pricing.Market;
 public static class CurveNames
 {
     public const string Pre = "BRL-PRE";
+    public const string Di = "BRL-DI";
     public const string IpcaReal = "BRL-IPCA-REAL";
 }
 

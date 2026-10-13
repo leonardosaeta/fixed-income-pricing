@@ -14,7 +14,7 @@ public class CdbRiskEngine:IRiskEngine<PostFixedCDB>
 
     public CdbRiskEngine(CdbPricingEngine pricingEngine)
     {
-        _pricingEngine = pricingEngine;
+        _pricingEngine = new CdbPricingEngine(pricingEngine.IndexName, AccrualRounding.None);
     }
 
     public RiskMetric Compute(PostFixedCDB instrument, MarketContext market)

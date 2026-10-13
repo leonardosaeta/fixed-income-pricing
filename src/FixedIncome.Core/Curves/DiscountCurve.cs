@@ -46,9 +46,11 @@ public class DiscountCurve:IYieldCurve
 
    public double DiscountFactor(DateOnly date)
    {
+       if (date < ReferenceDate)
+           throw new ArgumentException($"{date:yyyy-MM-dd} is before the curve's reference date {ReferenceDate:yyyy-MM-dd}");
        double t = _dayCountConvention.YearFraction(ReferenceDate, date, _calendar);
-       if(t<= 0)
-           return 0;
+       if (t <= 0)
+           return 1.0;
        int last = _pillarT.Length - 1;
        if (t > _pillarT[last])
        {
