@@ -1,6 +1,7 @@
 <Solution>
   <Folder Name="/src/">
     <Project Path="src/FixedIncome.Core/FixedIncome.Core.csproj" />
+    <Project Path="src/FixedIncome.Derivatives/FixedIncome.Derivatives.csproj" />
     <Project Path="src/FixedIncome.MarketData/FixedIncome.MarketData.csproj" />
     <Project Path="src/FixedIncome.Sandbox/FixedIncome.Sandbox.csproj" />
   </Folder>

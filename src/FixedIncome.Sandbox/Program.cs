@@ -5,12 +5,14 @@ using fixed_income_pricing.Dates;
 using fixed_income_pricing.Indices;
 using fixed_income_pricing.Instruments;
 using fixed_income_pricing.Instruments.Bank;
+using fixed_income_pricing.Instruments.Futures;
 using fixed_income_pricing.Instruments.Government;
 using fixed_income_pricing.Market;
 using fixed_income_pricing.MarketData;
 using fixed_income_pricing.Pricing;
 using fixed_income_pricing.Risk;
 using FixedIncome.MarketData.Anbima;
+using FixedIncome.MarketData.B3;
 
 CultureInfo.CurrentCulture = CultureInfo.InvariantCulture;
 
@@ -37,13 +39,17 @@ Console.WriteLine("\n[2] Curves");
 var market = BuildMarket(today);
 var previousMarket = Download(yesterday) ? BuildMarket(yesterday) : null;
 
-Console.WriteLine($"  {"Tenor",-6} {"Pré",9} {"Real",9} {"Breakeven",10}");
+bool hasDi = market.CurveNames.Contains(CurveNames.Di);
+if (!hasDi) Console.WriteLine($"  no B3 DI1 settlements for {today:yyyy-MM-dd}, DI curve skipped");
+
+Console.WriteLine($"  {"Tenor",-6} {"Pré",9} {"Real",9} {"Breakeven",10} {"DI",9} {"Pré-DI",8}");
 foreach (var years in new[] { 0.5, 1, 2, 3, 5, 10, 20 })
 {
     var date = calendar.AddBusinessDay(today, (int)(years * 252));
     double pre = market.Curve(CurveNames.Pre).ZeroRate(date);
     double real = market.Curve(CurveNames.IpcaReal).ZeroRate(date);
-    Console.WriteLine($"  {years + "y",-6} {pre,9:P3} {real,9:P3} {(1 + pre) / (1 + real) - 1,10:P3}");
+    var di = hasDi ? $"{market.Curve(CurveNames.Di).ZeroRate(date),9:P3} {(pre - market.Curve(CurveNames.Di).ZeroRate(date)) * 1e4,6:N1}bp" : "";
+    Console.WriteLine($"  {years + "y",-6} {pre,9:P3} {real,9:P3} {(1 + pre) / (1 + real) - 1,10:P3} {di}");
 }
 
 Console.WriteLine("\n[3] Valuation & risk");
@@ -92,7 +98,6 @@ foreach (var r in results)
                       $"{r.Quantity * r.Pv,15:N2} {r.Quantity * r.Item4.Risk.Dv01,10:N2} {r.Item4.Risk.ModifiedDuration,7:N2}");
 Console.WriteLine($"  {"TOTAL",-14} {"",-10} {"",7} {"",14} {results.Sum(r => r.Quantity * r.Pv),15:N2} {results.Sum(r => r.Quantity * r.Item4.Risk.Dv01),10:N2}");
 
-// ───────────────────────────── 4. Key-rate DV01
 Console.WriteLine("\n[4] Key-rate DV01");
 
 var keyRates = KeyRateReport.Aggregate(results.Where(r => r.Item4.KeyRates is not null).Select(r => (r.Quantity, r.Item4.KeyRates!)));
@@ -103,7 +108,6 @@ foreach (var curve in keyRates.Keys.Select(k => k.Curve).Distinct())
         Console.WriteLine($"    {tenor + "y",-6} {keyRates.GetValueOrDefault((curve, tenor)),12:N2}");
 }
 
-// ───────────────────────────── 5. Scenarios (full revaluation)
 Console.WriteLine("\n[5] Scenarios");
 
 var scenarios = new (string Name, string Curve, double Shift)[]
@@ -149,11 +153,26 @@ MarketContext BuildMarket(DateOnly date)
 
     var vna = AnbimaVnaFile.Parse(Path.Combine(dataDir, AnbimaClient.VnaFileName(date))).Single(v => v.Instrument == "NTN-B").Vna;
 
-    return new MarketContext(date, calendar, dayCount)
+    var m = new MarketContext(date, calendar, dayCount)
         .WithCurve(CurveNames.Pre, bootstrapper.Bootstrap(date, preQuotes))
         .WithCurve(CurveNames.IpcaReal, bootstrapper.Bootstrap(date, realQuotes))
         .WithIndex(IndexNames.Cdi, cdi)
         .WithQuote(QuoteNames.NtnBVna, vna);
+
+    var di1 = Di1Settlements(date)
+        .Where(x => x.SettlementRate is not null)
+        .Select(x => new RateQuote(Di1Future.FromTicker(x.Ticker, calendar), (double)x.SettlementRate!.Value))
+        .Where(x => x.Instrument.MaturityDate > date)
+        .ToList();
+    return di1.Count > 0 ? m.WithCurve(CurveNames.Di, bootstrapper.Bootstrap(date, di1)) : m;
+}
+
+IReadOnlyList<Di1Settlement> Di1Settlements(DateOnly date)
+{
+    var path = Path.Combine(dataDir, B3Client.Di1SettlementFileName(date));
+    return File.Exists(path) || B3Client.TryDownloadDi1SettlementsAsync(date, path).GetAwaiter().GetResult()
+        ? B3Di1SettlementFile.Parse(path)
+        : [];
 }
 
 List<AnbimaQuote> AnbimaQuotes(DateOnly date) =>
