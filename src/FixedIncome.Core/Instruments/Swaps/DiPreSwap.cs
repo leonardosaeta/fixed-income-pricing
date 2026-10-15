@@ -27,7 +27,7 @@ public class DiPreSwap:IInstrument
 
     public int FloatingSign => Side == SwapSide.PayFixed ? 1 : -1;
     
-    public double FixedLegAmount(IBusinessDayCalendar calendar) => FixedLegAmount(calendar);
+    public double FixedLegAmount(IBusinessDayCalendar calendar) => FixedLegAmount(FixedRate, calendar);
 
     public double FixedLegAmount(double fixedRate, IBusinessDayCalendar calendar)
     {

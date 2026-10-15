@@ -7,6 +7,7 @@ using fixed_income_pricing.Instruments;
 using fixed_income_pricing.Instruments.Bank;
 using fixed_income_pricing.Instruments.Futures;
 using fixed_income_pricing.Instruments.Government;
+using fixed_income_pricing.Instruments.Swaps;
 using fixed_income_pricing.Market;
 using fixed_income_pricing.MarketData;
 using fixed_income_pricing.Pricing;
@@ -59,7 +60,7 @@ DateOnly Nearest(string type, double years) => quotes
     .Where(q => q.Instrument == type)
     .MinBy(q => Math.Abs((q.Maturity.DayNumber - today.DayNumber) / 365.25 - years))!.Maturity;
 
-var book = new (IInstrument Instrument, double Quantity)[]
+var book = new List<(IInstrument Instrument, double Quantity)>
 {
     (new Ltn("LTN 1y", today.AddYears(-5), Nearest("LTN", 1)), 5_000),
     (new Ltn("LTN 5y", today.AddYears(-5), Nearest("LTN", 5)), 2_000),
@@ -72,23 +73,45 @@ var book = new (IInstrument Instrument, double Quantity)[]
 var preEngine = new CashflowPricingEngine();
 var ntnbEngine = new NtnBPricingEngine();
 var cdbEngine = new CdbPricingEngine();
+var swapEngine = new DiPreSwapPricingEngine();
+
+if (hasDi)
+{
+    DiPreSwap Swap(string id, int startBusinessDays, int tenorBusinessDays, SwapSide side)
+    {
+        var start = calendar.AddBusinessDay(today, startBusinessDays);
+        var maturity = calendar.AddBusinessDay(today, tenorBusinessDays);
+        var fixedRate = Math.Round(market.Curve(CurveNames.Di).ZeroRate(maturity), 3);
+        return new DiPreSwap(id, start, maturity, side, 10_000_000, fixedRate);
+    }
+
+    book.Add((Swap("DI×Pré 2y pay", -63, 504, SwapSide.PayFixed), 1));
+    book.Add((Swap("DI×Pré 5y rec", 0, 1260, SwapSide.ReceiveFixed), 1));
+}
 
 double Price(IInstrument instrument, MarketContext m) => instrument switch
 {
     NtnB b => ntnbEngine.Price(b, m).presentValue,
     ICashflowInstrument b => preEngine.Price(b, m).presentValue,
     PostFixedCDB c => cdbEngine.Price(c, m).presentValue,
+    DiPreSwap s => swapEngine.Price(s, m).presentValue,
     _ => throw new NotSupportedException(instrument.Id),
 };
 
+// A swap's PV is near zero, so a duration or convexity ratio against it would be meaningless.
 (RiskMetric Risk, KeyRateRisk? KeyRates) Risk(IInstrument instrument) => instrument switch
 {
     NtnB b => (new CurveRiskEngine<NtnB>(ntnbEngine).Compute(b, market), new CurveRiskEngine<NtnB>(ntnbEngine).KeyRates(b, market)),
     ICashflowInstrument b => (new CurveRiskEngine<ICashflowInstrument>(preEngine).Compute(b, market),
         new CurveRiskEngine<ICashflowInstrument>(preEngine).KeyRates(b, market)),
     PostFixedCDB c => (new CdbRiskEngine(cdbEngine).Compute(c, market), null),
+    DiPreSwap s => (new CurveRiskEngine<DiPreSwap>(swapEngine).Compute(s, market) with { ModifiedDuration = null, Convexity = null },
+        new CurveRiskEngine<DiPreSwap>(swapEngine).KeyRates(s, market)),
     _ => throw new NotSupportedException(instrument.Id),
 };
+
+bool Priceable(IInstrument instrument, MarketContext m) =>
+    instrument is not DiPreSwap || m.CurveNames.Contains(CurveNames.Di);
 
 var results = book.Select(p => (p.Instrument, p.Quantity, Pv: Price(p.Instrument, market), Risk(p.Instrument))).ToList();
 
@@ -97,6 +120,10 @@ foreach (var r in results)
     Console.WriteLine($"  {r.Instrument.Id,-14} {r.Instrument.MaturityDate:yyyy-MM-dd} {r.Quantity,7:N0} {r.Pv,14:N2} " +
                       $"{r.Quantity * r.Pv,15:N2} {r.Quantity * r.Item4.Risk.Dv01,10:N2} {r.Item4.Risk.ModifiedDuration,7:N2}");
 Console.WriteLine($"  {"TOTAL",-14} {"",-10} {"",7} {"",14} {results.Sum(r => r.Quantity * r.Pv),15:N2} {results.Sum(r => r.Quantity * r.Item4.Risk.Dv01),10:N2}");
+
+foreach (var swap in book.Select(p => p.Instrument).OfType<DiPreSwap>())
+    Console.WriteLine($"  {swap.Id}: fixed {swap.FixedRate:P3}, par {swapEngine.ParRate(swap, market):P3}, " +
+                      $"{swap.Side}, notional {swap.Notional:N0}");
 
 Console.WriteLine("\n[4] Key-rate DV01");
 
@@ -110,13 +137,18 @@ foreach (var curve in keyRates.Keys.Select(k => k.Curve).Distinct())
 
 Console.WriteLine("\n[5] Scenarios");
 
-var scenarios = new (string Name, string Curve, double Shift)[]
+var scenarios = new List<(string Name, string Curve, double Shift)>
 {
     ("Pré +100bp", CurveNames.Pre, 0.01),
     ("Pré -100bp", CurveNames.Pre, -0.01),
     ("Real +50bp", CurveNames.IpcaReal, 0.005),
     ("Real -50bp", CurveNames.IpcaReal, -0.005),
 };
+if (hasDi)
+{
+    scenarios.Add(("DI +100bp", CurveNames.Di, 0.01));
+    scenarios.Add(("DI -100bp", CurveNames.Di, -0.01));
+}
 foreach (var s in scenarios)
 {
     var shocked = market.WithCurve(s.Curve, new ParallelShiftedCurve(market.Curve(s.Curve), s.Shift, dayCount, calendar));
@@ -130,9 +162,12 @@ if (previousMarket is null)
     Console.WriteLine($"  no ANBIMA data for {yesterday:yyyy-MM-dd}, skipped");
 else
 {
+    var priceable = results.Where(r => Priceable(r.Instrument, previousMarket)).ToList();
     foreach (var r in results)
-        Console.WriteLine($"  {r.Instrument.Id,-14} {r.Quantity * (r.Pv - Price(r.Instrument, previousMarket)),14:N2}");
-    Console.WriteLine($"  {"TOTAL",-14} {results.Sum(r => r.Quantity * (r.Pv - Price(r.Instrument, previousMarket))),14:N2}");
+        Console.WriteLine(Priceable(r.Instrument, previousMarket)
+            ? $"  {r.Instrument.Id,-14} {r.Quantity * (r.Pv - Price(r.Instrument, previousMarket)),14:N2}"
+            : $"  {r.Instrument.Id,-14} {"n/a (no DI curve)",14}");
+    Console.WriteLine($"  {"TOTAL",-14} {priceable.Sum(r => r.Quantity * (r.Pv - Price(r.Instrument, previousMarket))),14:N2}");
     Console.WriteLine("  (coupons paid overnight are not added back)");
 }
 

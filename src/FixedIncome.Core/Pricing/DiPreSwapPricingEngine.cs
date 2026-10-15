@@ -10,7 +10,7 @@ public class DiPreSwapPricingEngine:ICurvePricingEngine<DiPreSwap>
    public string CurveName { get; }
    public string IndexName { get; }
 
-   public DiPreSwapPricingEngine(string curveName = CurveNames.Di, string indexName = CurveNames.Pre)
+   public DiPreSwapPricingEngine(string curveName = CurveNames.Di, string indexName = IndexNames.Cdi)
    {
       CurveName = curveName;
       IndexName = indexName;

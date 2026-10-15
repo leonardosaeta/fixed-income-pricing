@@ -16,10 +16,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea5e9e70-5641-43de-9c32-22186835c1a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Swaps/DiPreSwap.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Swaps/SwapSide.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/DiPreSwapPricingEngine.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Swaps/DiPreSwap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Swaps/DiPreSwap.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/DiPreSwapPricingEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/DiPreSwapPricingEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
