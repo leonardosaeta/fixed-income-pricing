@@ -11,6 +11,8 @@ internal static class B3TestData
 
     private static readonly Lazy<DateOnly> Latest = new(ResolveReferenceDate);
 
+    private static bool Offline => AnbimaTestData.Offline;
+
     private static string Dir => Path.Combine(AppContext.BaseDirectory, "data", "b3");
 
     public static DateOnly ReferenceDate => Latest.Value;
@@ -25,7 +27,7 @@ internal static class B3TestData
         var date = DateOnly.FromDateTime(DateTime.Today);
         if (!Calendar.IsBusinessDays(date)) date = Calendar.AddBusinessDay(date, -1);
 
-        for (var i = 0; i < MaxBusinessDaysBack; i++, date = Calendar.AddBusinessDay(date, -1))
+        for (var i = 0; i < MaxBusinessDaysBack && !Offline; i++, date = Calendar.AddBusinessDay(date, -1))
         {
             var path = Path.Combine(Dir, B3Client.Di1SettlementFileName(date));
             try

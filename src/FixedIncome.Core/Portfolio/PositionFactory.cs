@@ -7,13 +7,13 @@ public class PositionFactory
 {
    public static Position FromResults(double quantity, PricingResult pricing, RiskMetric risk)
    {
-      if (pricing.InstrumnetId != risk.InstrumentId)
+      if (pricing.InstrumentId != risk.InstrumentId)
          throw new ArgumentException("pricing and risk results must reference the same instrument");
 
       return new Position(
-         pricing.InstrumnetId,
+         pricing.InstrumentId,
          quantity,
-         pricing.presentValue,
+         pricing.PresentValue,
          risk.ModifiedDuration,
          risk.Convexity,
          risk.Dv01);

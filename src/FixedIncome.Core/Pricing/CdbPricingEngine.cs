@@ -16,9 +16,9 @@ public class CdbPricingEngine:IPricingEngine<PostFixedCDB>
         Rounding = rounding;
     }
 
-    public PricingResult Price(PostFixedCDB instruement, MarketContext market)
+    public PricingResult Price(PostFixedCDB instrument, MarketContext market)
     {
-        double value = instruement.AccruedValue(market.ValuationDate, market.Index<IDailyRateIndex>(IndexName), Rounding);
-        return new PricingResult(instruement.Id, market.ValuationDate, value);
+        double value = instrument.AccruedValue(market.ValuationDate, market.Index<IDailyRateIndex>(IndexName), Rounding);
+        return new PricingResult(instrument.Id, market.ValuationDate, value);
     }
 }

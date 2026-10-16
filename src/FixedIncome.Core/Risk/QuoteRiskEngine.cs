@@ -46,6 +46,6 @@ public class QuoteRiskEngine<TInstrument> where TInstrument : IInstrument
     {
         var quotes = _quotes.Select((q, i) => i == bumped ? q with { Rate = q.Rate + size } : q);
         var curve = _bootstrapper.Bootstrap(market.ValuationDate, quotes);
-        return _pricingEngine.Price(instrument, market.WithCurve(_pricingEngine.CurveName, curve)).presentValue;
+        return _pricingEngine.Price(instrument, market.WithCurve(_pricingEngine.CurveName, curve)).PresentValue;
     }
 }

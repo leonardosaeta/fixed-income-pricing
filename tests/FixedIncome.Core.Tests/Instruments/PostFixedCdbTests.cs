@@ -60,14 +60,14 @@ public class PostFixedCdbTests
     {
         var result = new CdbPricingEngine().Price(Cdb, Market);
 
-        result.presentValue.Should().Be(Cdb.AccruedValue(Valuation, Cdi));
+        result.PresentValue.Should().Be(Cdb.AccruedValue(Valuation, Cdi));
     }
 
     [Fact]
     public void Risk_Dv01IsNegativeAndMatchesTheAnalyticApproximation()
     {
         var engine = new CdbPricingEngine();
-        var value = engine.Price(Cdb, Market).presentValue;
+        var value = engine.Price(Cdb, Market).PresentValue;
         double tau = Calendar.CountBusinessDaysBetween(Issue, Valuation) / 252.0;
         double daily = Math.Pow(1 + Rate, 1.0 / 252.0);
 

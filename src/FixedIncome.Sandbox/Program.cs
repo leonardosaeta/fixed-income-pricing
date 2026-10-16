@@ -91,10 +91,10 @@ if (hasDi)
 
 double Price(IInstrument instrument, MarketContext m) => instrument switch
 {
-    NtnB b => ntnbEngine.Price(b, m).presentValue,
-    ICashflowInstrument b => preEngine.Price(b, m).presentValue,
-    PostFixedCDB c => cdbEngine.Price(c, m).presentValue,
-    DiPreSwap s => swapEngine.Price(s, m).presentValue,
+    NtnB b => ntnbEngine.Price(b, m).PresentValue,
+    ICashflowInstrument b => preEngine.Price(b, m).PresentValue,
+    PostFixedCDB c => cdbEngine.Price(c, m).PresentValue,
+    DiPreSwap s => swapEngine.Price(s, m).PresentValue,
     _ => throw new NotSupportedException(instrument.Id),
 };
 

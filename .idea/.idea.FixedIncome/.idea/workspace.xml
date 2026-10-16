@@ -16,9 +16,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea5e9e70-5641-43de-9c32-22186835c1a0" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Swaps/DiPreSwap.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Instruments/Swaps/DiPreSwap.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/DiPreSwapPricingEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/DiPreSwapPricingEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Portfolio/PositionFactory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Portfolio/PositionFactory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/CdbPricingEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/CdbPricingEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/PricingResult.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Pricing/PricingResult.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/CdbRiskEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/CdbRiskEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/CurveRiskEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/CurveRiskEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/QuoteRiskEngine.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Core/Risk/QuoteRiskEngine.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/AnbimaTestData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/AnbimaTestData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/B3TestData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/B3TestData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/PostFixedCdbTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/PostFixedCdbTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Pricing/NtnBEngineTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Pricing/NtnBEngineTests.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Risk/QuoteRiskTests.cs" beforeDir="false" afterPath="$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Risk/QuoteRiskTests.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,14 +69,21 @@
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Indices/DailyRateAccrual.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Indices/ProjectedDailyRateIndex.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Instruments/Bank/PostFixedCDB.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Instruments/Swaps/DiPreSwap.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Market/MarketNames.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Portfolio/PositionFactory.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Pricing/CdbPricingEngine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Pricing/DiPreSwapPricingEngine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Risk/CdbRiskEngine.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Core/Risk/QuoteRiskEngine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.MarketData/B3/B3Di1SettlementFile.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Sandbox/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Curves/DiscountCurveTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Indices/DailyCompoundingIndexTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Indices/ProjectedDailyRateIndexTests.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Instruments/AnbimaTestData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Instruments/B3TestData.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/tests/FixedIncome.Core.Tests/Risk/QuoteRiskTests.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />

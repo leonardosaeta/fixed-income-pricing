@@ -11,6 +11,9 @@ internal static class AnbimaTestData
 
     private static readonly Lazy<DateOnly> Latest = new(ResolveReferenceDate);
 
+    // Set FIXEDINCOME_OFFLINE=1 to skip downloads and use the committed fixtures under data/ (CI does this).
+    internal static bool Offline => Environment.GetEnvironmentVariable("FIXEDINCOME_OFFLINE") == "1";
+
     private static string Dir => Path.Combine(AppContext.BaseDirectory, "data", "anbima");
 
     public static DateOnly ReferenceDate => Latest.Value;
@@ -32,7 +35,7 @@ internal static class AnbimaTestData
         var date = DateOnly.FromDateTime(DateTime.Today);
         if (!Calendar.IsBusinessDays(date)) date = Calendar.AddBusinessDay(date, -1);
 
-        for (var i = 0; i < MaxBusinessDaysBack; i++, date = Calendar.AddBusinessDay(date, -1))
+        for (var i = 0; i < MaxBusinessDaysBack && !Offline; i++, date = Calendar.AddBusinessDay(date, -1))
         {
             try
             {

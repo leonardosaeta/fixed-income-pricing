@@ -22,9 +22,9 @@ public class CdbRiskEngine:IRiskEngine<PostFixedCDB>
         var cdi = market.Index<IDailyRateIndex>(_pricingEngine.IndexName);
 
         double pvUp = _pricingEngine.Price(instrument,
-            market.WithIndex(_pricingEngine.IndexName, new ShiftedDailyRateIndex(cdi, +Bump))).presentValue;
+            market.WithIndex(_pricingEngine.IndexName, new ShiftedDailyRateIndex(cdi, +Bump))).PresentValue;
         double pvDown = _pricingEngine.Price(instrument,
-            market.WithIndex(_pricingEngine.IndexName, new ShiftedDailyRateIndex(cdi, -Bump))).presentValue;
+            market.WithIndex(_pricingEngine.IndexName, new ShiftedDailyRateIndex(cdi, -Bump))).PresentValue;
 
         double dv01 = (pvDown - pvUp) / 2.0;
 

@@ -44,7 +44,7 @@ public class CurveRiskEngine<TInstrument> : IRiskEngine<TInstrument> where TInst
     private double Dv01(TInstrument instrument, MarketContext market, ICurveShift shift) =>
         (Pv(instrument, Shifted(market, shift, -Bump)) - Pv(instrument, Shifted(market, shift, +Bump))) / 2.0;
 
-    private double Pv(TInstrument instrument, MarketContext market) => _pricingEngine.Price(instrument, market).presentValue;
+    private double Pv(TInstrument instrument, MarketContext market) => _pricingEngine.Price(instrument, market).PresentValue;
 
     private MarketContext Shifted(MarketContext market, ICurveShift shift, double size)
     {

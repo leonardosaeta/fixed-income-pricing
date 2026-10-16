@@ -1,5 +1,7 @@
 # Fixed Income Pricing — Brazilian Market
 
+[![CI](https://github.com/leonardosaeta/fixed-income-pricing/actions/workflows/ci.yml/badge.svg)](https://github.com/leonardosaeta/fixed-income-pricing/actions/workflows/ci.yml)
+
 A pricing and risk library for Brazilian fixed income, built from first
 principles: business-day calendar → Bus/252 day count → discount curve →
 instrument cash flows → pricing engines → bump-and-reprice risk → portfolio
@@ -15,6 +17,8 @@ official numbers (ANBIMA, B3, Banco Central).
 | **NTN-F** | Pré-fixado bond, 10% p.a. paid semiannually | Every NTN-F reprices to R$ 10⁻⁶ |
 | **NTN-B** | IPCA-linked bond, 6% p.a. real coupon on the VNA | Every NTN-B reprices to R$ 10⁻⁶ given ANBIMA's VNA |
 | **CDB pós-fixado** | Bank deposit paying a percentage of CDI | Matches the B3 "DI percentual" accrual formula |
+| **DI1 future** | B3 one-day interbank deposit future, 100,000 points at maturity | DI curve reprices every settlement PU; PU and daily-adjustment rounding follow B3 |
+| **DI×Pré swap** | Fixed rate against CDI, one settlement at maturity, on the DI curve | Par rate equals the DI curve rate / forward; prices to zero at par |
 
 Plus the market objects behind them:
 
@@ -35,16 +39,18 @@ src/
     Curves/      IYieldCurve, DiscountCurve, FlatForwardInterpolator,
                  IterativeCurveBootstrapper, ParallelShiftedCurve, BucketShiftedCurve
     Indices/     IIndex, IDailyRateIndex, CDIIndex, SelicIndex, IPCAIndex, IpcaVna
-    Instruments/ IInstrument, ICashflowInstrument, Ltn, NtnF, NtnB, PostFixedCDB
+    Instruments/ IInstrument, ICashflowInstrument, Ltn, NtnF, NtnB, PostFixedCDB,
+                 Di1Future, DiPreSwap
     Market/      MarketContext (named curves, indices and quotes for one date)
-    Pricing/     IPricingEngine<T>, CashflowPricingEngine, NtnBPricingEngine, CdbPricingEngine
+    Pricing/     IPricingEngine<T>, CashflowPricingEngine, NtnBPricingEngine, CdbPricingEngine,
+                 DiPreSwapPricingEngine
     Risk/        IRiskEngine<T>, CurveRiskEngine<T>, CdbRiskEngine, ICurveShift, KeyRateReport
     Portfolio/   Position, Portfolio, PortfolioRiskReport
     MarketData/  BcbApiSource (BCB SGS API), CsvRateDataSource (local cache)
-  FixedIncome.MarketData   ANBIMA download client and file parsers
+  FixedIncome.MarketData   ANBIMA and B3 download clients and file parsers
   FixedIncome.Sandbox      end-to-end pricing cycle on one date (see below)
 tests/
-  FixedIncome.Core.Tests   xUnit + FluentAssertions, 90 tests
+  FixedIncome.Core.Tests   xUnit + FluentAssertions, 126 tests
 ```
 
 A typical valuation:
@@ -107,15 +113,15 @@ var keys   = risk.KeyRates(ntnf, market);           // DV01 per tenor bucket
 - Holidays are generated from rules (fixed + Easter-based). They match the
   Banco Central publication calendar over 2021–2026, but an ad-hoc national
   holiday would need a code change.
-- Market-validation tests download the latest ANBIMA files and fall back to a
-  local cache; a fresh clone without network access cannot run them yet.
+- Market-validation tests download the latest ANBIMA and B3 files and fall
+  back to a single committed snapshot in `data/` (see Running it).
 
 ## Roadmap
 
 1. **REST API** (`FixedIncome.Api`, ASP.NET Core minimal API): a market
    snapshot service per date, endpoints for curves, prices, risk and portfolio
    reports, OpenAPI docs and integration tests.
-2. **Derivatives**: DI1 futures and DI×Pré swaps in Core, then a
+2. **Derivatives**: DI1 futures and DI×Pré swaps are in Core; next, a
    `FixedIncome.Derivatives` project for options (models, volatility
    surfaces, calibration), validated against B3 settlement data.
 
@@ -129,8 +135,16 @@ dotnet test tests/FixedIncome.Core.Tests
 ```
 
 The market-validation tests fetch the latest ANBIMA secondary-market and VNA
-files (or reuse the cached ones) and reprice every LTN, NTN-F and NTN-B in
-them.
+files and B3 DI1 settlements (or reuse the cached ones) and reprice every LTN,
+NTN-F and NTN-B, and rebuild the DI curve from them. If the download fails they
+fall back to the snapshot committed in `data/` (2026-10-13). To run against that
+snapshot only, with no network access:
+
+```
+FIXEDINCOME_OFFLINE=1 dotnet test tests/FixedIncome.Core.Tests
+```
+
+CI runs this way on every push.
 
 ### Pricing-cycle sandbox
 

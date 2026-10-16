@@ -32,7 +32,7 @@ public class QuoteRiskTests
     public void QuotedContract_CarriesAllItsRiskInItsOwnQuote()
     {
         var f28 = Quotes[2];
-        double pv = Pricing.Price(f28.Instrument, Market).presentValue;
+        double pv = Pricing.Price(f28.Instrument, Market).PresentValue;
         double t = Calendar.CountBusinessDaysBetween(Reference, f28.Instrument.MaturityDate) / 252.0;
 
         var risk = Engine.Compute(f28.Instrument, Market);
