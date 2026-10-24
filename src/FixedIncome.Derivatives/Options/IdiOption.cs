@@ -1,6 +1,8 @@
+using fixed_income_pricing.Instruments;
+
 namespace FixedIncome.Derivatives.Options;
 
-public class IdiOptions
+public class IdiOption : IInstrument
 {
 
     public const double PointValue = 1.0;
@@ -9,7 +11,7 @@ public class IdiOptions
     public double Strike {get;}
     public OptionType Type { get; }
 
-    public IdiOptions(string id, DateOnly maturityDate, double strike, OptionType type)
+    public IdiOption(string id, DateOnly maturityDate, double strike, OptionType type)
     {
        if(strike<=0)
            throw new ArgumentException("Strike must be greater than zero", nameof(strike)); 

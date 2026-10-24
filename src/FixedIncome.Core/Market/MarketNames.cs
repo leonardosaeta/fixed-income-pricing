@@ -17,4 +17,5 @@ public static class IndexNames
 public static class QuoteNames
 {
     public const string NtnBVna = "VNA/NTN-B";
+    public const string Idi = "IDI";
 }
