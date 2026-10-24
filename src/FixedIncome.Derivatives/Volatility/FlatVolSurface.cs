@@ -10,5 +10,5 @@ public sealed class FlatVolSurface:IVolSurface
         _volatility = volatility;
     }
 
-    public double Volatility(double timeToExpiry, double logMoneyness);
+    public double Volatility(double timeToExpiry, double logMoneyness) => _volatility;
 }
