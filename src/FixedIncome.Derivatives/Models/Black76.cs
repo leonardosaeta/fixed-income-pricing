@@ -1,4 +1,3 @@
-using System.Reflection.Metadata;
 using FixedIncome.Derivatives.Options;
 
 namespace FixedIncome.Derivatives.Models;

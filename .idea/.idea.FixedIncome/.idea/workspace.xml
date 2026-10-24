@@ -16,9 +16,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea5e9e70-5641-43de-9c32-22186835c1a0" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/FixedIncome.Derivatives/Pricing/IdiOptionPricingEngine.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.github/workflows/ci.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/ci.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.FixedIncome/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Derivatives/Options/IdiOptions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Derivatives/Options/IdiOption.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FixedIncome.slnx" beforeDir="false" afterPath="$PROJECT_DIR$/FixedIncome.slnx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Derivatives/Models/Black76.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Derivatives/Models/Black76.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/FixedIncome.Derivatives/Volatility/GridVolSurface.cs" beforeDir="false" afterPath="$PROJECT_DIR$/src/FixedIncome.Derivatives/Volatility/GridVolSurface.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,7 +56,9 @@
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.MarketData/Instruments/LtnTests.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/FixedIncome.Sandbox/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/tests/FixedIncome.Core.Tests/Instruments/LtnAnbimaTests.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Derivatives/Models/Black76.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Derivatives/Volatility/FlatVolSurface.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Users/leonardo/Documents/GitHub/fixed-income-pricing/src/FixedIncome.Derivatives/Volatility/GridVolSurface.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="McpProjectServerCommands">
     <commands />
@@ -62,61 +67,61 @@
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0000000019352058" />
-      <entry key="S30" value="1.0063347294092464" />
-      <entry key="S60" value="1.42853151360391" />
-      <entry key="M2" value="5.373522512336679" />
-      <entry key="M5" value="22.45739942212482" />
-      <entry key="M10" value="40.56850352075822" />
-      <entry key="M15" value="50.20822176411032" />
-      <entry key="M30" value="62.68946560946599" />
-      <entry key="H1" value="70.30389883980283" />
-      <entry key="H2" value="76.08285051792647" />
-      <entry key="H4" value="94.41671555689277" />
-      <entry key="D1" value="285.01552410476484" />
-      <entry key="W1" value="1194.5739199352768" />
+      <entry key="MS100" value="1.003472041723307" />
+      <entry key="MS500" value="1.3221936576212538" />
+      <entry key="S2" value="1.753406298801007" />
+      <entry key="S5" value="1.8929182485225935" />
+      <entry key="S10" value="1.9449435160487603" />
+      <entry key="S30" value="1.9813004321126375" />
+      <entry key="S60" value="1.990920805575179" />
+      <entry key="M2" value="2.028955582104648" />
+      <entry key="M5" value="4.404239600526175" />
+      <entry key="M10" value="15.165643633804217" />
+      <entry key="M15" value="25.75685247046482" />
+      <entry key="M30" value="45.353804615286705" />
+      <entry key="H1" value="60.82174501785219" />
+      <entry key="H2" value="72.00903456882648" />
+      <entry key="H4" value="92.92979839803795" />
+      <entry key="D1" value="285.72383921774195" />
+      <entry key="W1" value="1196.1996021739146" />
     </decayedCancelled>
     <decayedSelected>
       <entry key="MS100" value="0.0" />
-      <entry key="MS500" value="6.268508924098518E-193" />
-      <entry key="S2" value="8.897972560122313E-49" />
-      <entry key="S5" value="6.021952442546955E-20" />
-      <entry key="S10" value="2.4844343050414446E-10" />
-      <entry key="S30" value="0.001037125023864087" />
-      <entry key="S60" value="0.07535497919553044" />
-      <entry key="M2" value="0.7518728445598368" />
-      <entry key="M5" value="3.3823559082911134" />
-      <entry key="M10" value="5.926947723265431" />
-      <entry key="M15" value="7.229651248300435" />
-      <entry key="M30" value="8.882173630123484" />
-      <entry key="H1" value="9.875909262615037" />
-      <entry key="H2" value="10.631681369070858" />
-      <entry key="H4" value="13.057695978563103" />
-      <entry key="D1" value="36.48835565412204" />
-      <entry key="W1" value="162.70266911688336" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="7.233124466139852E-200" />
+      <entry key="S5" value="2.206740532026915E-80" />
+      <entry key="S10" value="1.503953790479234E-40" />
+      <entry key="S30" value="8.773376590373251E-14" />
+      <entry key="S60" value="6.930742816139071E-7" />
+      <entry key="M2" value="0.0022802282099879893" />
+      <entry key="M5" value="0.3326234548604328" />
+      <entry key="M10" value="1.8586511280804638" />
+      <entry key="M15" value="3.337043514207124" />
+      <entry key="M30" value="6.03450316699352" />
+      <entry key="H1" value="8.140258970868425" />
+      <entry key="H2" value="9.652337915853957" />
+      <entry key="H4" value="12.441760451447555" />
+      <entry key="D1" value="36.195688285858374" />
+      <entry key="W1" value="162.51559469738953" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="2.3419534163214442E-4" />
-      <entry key="MS500" value="0.18789518475819533" />
-      <entry key="S2" value="0.6583834610296216" />
-      <entry key="S5" value="0.8460413022415949" />
-      <entry key="S10" value="0.9198050370080652" />
-      <entry key="S30" value="0.97971541038184" />
-      <entry key="S60" value="1.4836921445468623" />
-      <entry key="M2" value="6.086900601100863" />
-      <entry key="M5" value="25.775644325050273" />
-      <entry key="M10" value="46.436444260842656" />
-      <entry key="M15" value="57.38866646830245" />
-      <entry key="M30" value="71.54051593548496" />
-      <entry key="H1" value="80.16222677568686" />
-      <entry key="H2" value="86.70503096870195" />
-      <entry key="H4" value="107.46875785887809" />
-      <entry key="D1" value="321.5013764146825" />
-      <entry key="W1" value="1357.2750960495084" />
+      <entry key="MS100" value="0.7933719169093457" />
+      <entry key="MS500" value="1.2734843913483211" />
+      <entry key="S2" value="1.7401269137112445" />
+      <entry key="S5" value="1.8874735386151915" />
+      <entry key="S10" value="1.9421966812215108" />
+      <entry key="S30" value="1.9803791444200782" />
+      <entry key="S60" value="1.9904571500137567" />
+      <entry key="M2" value="2.0308075326144768" />
+      <entry key="M5" value="4.730098211955157" />
+      <entry key="M10" value="17.00533060022122" />
+      <entry key="M15" value="29.070791076611567" />
+      <entry key="M30" value="51.366910519051174" />
+      <entry key="H1" value="68.94736924084064" />
+      <entry key="H2" value="81.65267037558773" />
+      <entry key="H4" value="105.366132425451" />
+      <entry key="D1" value="321.91703748757993" />
+      <entry key="W1" value="1358.713704616459" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{

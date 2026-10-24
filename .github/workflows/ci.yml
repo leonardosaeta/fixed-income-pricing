@@ -17,4 +17,4 @@ jobs:
       - name: Test (offline, committed market-data fixtures)
         env:
           FIXEDINCOME_OFFLINE: "1"
-        run: dotnet test tests/FixedIncome.Core.Tests --configuration Release --no-build
+        run: dotnet test FixedIncome.slnx --configuration Release --no-build

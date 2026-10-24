@@ -19,8 +19,9 @@ public class GridVolSurface:IVolSurface
 
         for (int j = 0; j < logMoneyss.Length; j++)
         for (int i = 1; i < expiries.Length; i++)
-            if (TotalVariance(vols[i][j], expiries[i]) < TotalVariance(vols[i - 1][j], expiries[i]))
-                throw new ArgumentException("vols must be positive and increasing");
+            if (TotalVariance(vols[i][j], expiries[i]) < TotalVariance(vols[i - 1][j], expiries[i - 1]))
+                throw new ArgumentException(
+                    $"calendar arbitrage: total variance falls between expiries {expiries[i - 1]} and {expiries[i]} at log-moneyness {logMoneyss[j]}");
 
         _expiries = expiries;
         _logMoneyness = logMoneyss;

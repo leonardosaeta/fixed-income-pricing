@@ -7,5 +7,6 @@
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/FixedIncome.Core.Tests/FixedIncome.Core.Tests.csproj" />
+    <Project Path="tests/FixedIncome.Derivatives.Tests/FixedIncome.Derivatives.Tests.csproj" />
   </Folder>
 </Solution>
